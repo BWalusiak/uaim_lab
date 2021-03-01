@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAIM1", "UAIM1\UAIM1.csproj", "{8BA8342E-2115-42AA-B1AC-3CA8785A03F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uaim1", "Uaim1\Uaim1.csproj", "{8BA8342E-2115-42AA-B1AC-3CA8785A03F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
