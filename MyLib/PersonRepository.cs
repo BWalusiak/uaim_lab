@@ -13,9 +13,9 @@ namespace MyLib
 
         public Person[] Find(Sex color)
         {
-            IList<Person> foundShapes = _persons.Where(s => s.Sex == color).ToList();
+            IList<Person> foundPersons = _persons.Where(s => s.Sex == color).ToList();
 
-            return foundShapes.ToArray();
+            return foundPersons.ToArray();
         }
     }
 }
