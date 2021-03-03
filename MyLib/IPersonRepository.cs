@@ -2,6 +2,6 @@ namespace MyLib
 {
     public interface IPersonRepository
     {
-        Person[] Find(Sex color);
+        Person[] Find(Sex sex);
     }
 }

@@ -19,8 +19,6 @@ namespace Uaim1
 
                 Console.WriteLine($"person description = {personDescription}; person can operate = {canOperate}");
             }
-
-            Console.ReadLine();
         }
     }
 }
