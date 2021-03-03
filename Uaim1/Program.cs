@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using MyLib;
 
 namespace Uaim1
 {
@@ -7,16 +8,16 @@ namespace Uaim1
     {
         public static void Main(string[] args)
         {
-            IShapeRepository shapeRepository = new ShapeRepository();
+            IPersonRepository personRepository = new PersonRepository();
 
-            Debug.Assert(shapeRepository != null);
+            Debug.Assert(personRepository != null);
 
-            foreach (var shape in shapeRepository.Find(ShapeColor.Green))
+            foreach (var person in personRepository.Find(Sex.Male))
             {
-                var shapeDescription = shape.GetDescription();
-                var shapeArea = shape.GetArea();
+                var personDescription = person.GetDescription();
+                var canOperate = person.CanOperate();
 
-                Console.WriteLine($"shape description = {shapeDescription}; shape area = {shapeArea}");
+                Console.WriteLine($"person description = {personDescription}; person can operate = {canOperate}");
             }
 
             Console.ReadLine();

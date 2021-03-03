@@ -10,4 +10,8 @@
       <Folder Include="Models" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MyLib\MyLib.csproj" />
+    </ItemGroup>
+
 </Project>
