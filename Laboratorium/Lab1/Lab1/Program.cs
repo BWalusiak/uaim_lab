@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using MyLib;
 
-namespace Uaim1
+namespace Lab1
 {
     public class Program
     {
