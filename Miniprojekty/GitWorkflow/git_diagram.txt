@@ -1,0 +1,119 @@
+title Diagram korzystania z oprogramowania wersjonowania kodu oraz GitLab'a i Visual Studio - UAIM
+frame UAIM_Git_Diagram
+bottomparticipants 
+
+
+actor "Menadżer projektu" as UserA
+fontawesome fb0f "Visual Studio managera" as VSA
+
+actor "Programista projektu" as UserB
+
+fontawesome fb0f "Visual Studio programisty" as VSB
+
+fontawesome f296 "Uczelniany GitLab" as GitLab
+
+participant [
+
+[->UserA:Wpada na pomysł
+
+== **Stworzenie repozytorium przez menadżera** ==
+UserA->(2)GitLab:Prośba o utworzenie odległego repozytorium 
+
+UserA(2)<--GitLab:Dwieście jeden - stworzyłem
+
+UserA->VSA:Prośba o stowrzenie pobliskiego repozytorium 
+UserA<--VSA:Utworzono pobliskie repozytoroium 
+
+== **Pierwsze zmiany menadżera** ==
+
+UserA->VSA:Wprowadź zmiany w kodzie
+UserA<--VSA:Wprowadziłem zmiany
+
+UserA->VSA:Zatwierdź zmiany
+UserA<--VSA:Zatwierdziłem zmiany
+
+UserA->VSA:Wypchnij zatwierdzenie
+activate VSA
+VSA->(2)GitLab:Wypycham zatwierdzenie
+activate GitLab
+
+VSA(2)<-GitLab:Potrzebne uwierzytelnienie
+activate GitLab
+UserA<-VSA:Podaj identyfikator użytkownika i hasło
+UserA-->VSA://manager:admin123//
+
+abox over VSA:Zapisałem dane uwierzytelniające w pamięci podręcznej
+
+VSA-->(2)GitLab://a77949a2aad251115b42010a6af0e32f4915bd2e9f1347ca257ecf4364246955//
+
+VSA(2)<-GitLab:Uwierzytelnianie powiodło się
+deactivate GitLab
+VSA(2)<--GitLab:Potwierdzam wypchnięcie zatwierdzenia
+deactivate GitLab
+
+UserA<--VSA:Sukcesywne wypchnięcie zatwierdzenia
+deactivate VSA
+
+== **Utowrzenie środowiska programistycznego programisty** ==
+
+UserA->(2)GitLab:Dodaj mojego pracownika do projektu
+UserA(2)<--GitLab:Dwieście - okej
+
+UserA->UserB:Pobierz nasz nowy projekt
+
+UserB->VSB:Sklonuj odległe repozytoriu
+activate VSB
+
+VSB->(2)GitLab:Klonuje repozytorium
+activate GitLab
+
+VSB(2)<-GitLab:Potrzebne uwierzytelnienie
+activate GitLab
+
+UserB<-VSB:Podaj identyfikator użytkownika i hasło
+UserB-->VSB://koder:UmiemWkodowanie//
+abox over VSB:Zapisanie dane uwierzytelniające w pamięci podręcznej
+VSB->(2)GitLab://e95e4585765a8d071b4cf157221db88e9578c469f51e3c9f9f45a72d2a8dcff7//
+VSB(2)<--GitLab:Uwierzytelnianie powiodło się
+deactivate GitLab
+VSB(10)<--GitLab:Pliki z repozytorium
+deactivate GitLab
+
+UserB<--VSB:Sukcesywne sklonowanie repozytorium
+
+deactivate VSB
+UserB<-VSB:Otwieram projekt
+
+UserB-->UserA:Pobrałem projekt
+UserA->UserB:Utwórz swoją gałąź i zacznij pracę nad nowościami przypisanymi w Jirze
+
+== **Praca programisty nad nowościami** ==
+
+UserB->VSB:Utwórz pobliską gałąź //nowość/strona-logowania// i wymelduj ją
+UserB<--VSB:Utwórzyłem pobliską gałąź //nowość/strona-logowania// i wymeldowałem ją
+
+UserB->VSB:Wprowadź zmiany w kodzie
+UserB<--VSB:Wprowadziłem zmiany
+
+UserB->VSB:Zatwierdź zmiany
+UserB<--VSB:Zatwierdziłem zmiany
+
+UserB->VSB:Wypchnij zatwierdzenie
+activate VSB
+VSB->(2)GitLab:Wypycham zatwierdzenie
+activate GitLab
+VSB(2)<-GitLab:Potrzebne uwierzytelnienie
+activate GitLab
+
+
+abox over VSB:Ładowanie danych uwierzytelniających z pamięci podręcznej
+VSB->(2)GitLab:e95e4585765a8d071b4cf157221db88e9578c469f51e3c9f9f45a72d2a8dcff7
+VSB(2)<--GitLab:Uwierzytelnianie powiodło się
+deactivate GitLab
+VSB(2)<--GitLab:Potwierdzam wypchnięcie zatwierdzenia
+deactivate GitLab
+UserB<--VSB:Sukcesywne wypchnięcie zatwierdzenia
+deactivate VSB
+
+UserB->UserA: Zaimplementowałem nowość, poproszę o wypłatę
+UserB<--UserA: Przesyłam **15k**
