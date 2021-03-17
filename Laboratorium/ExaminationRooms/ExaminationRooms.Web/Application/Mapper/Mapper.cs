@@ -1,3 +1,5 @@
+using ExaminationRooms.Web.Application.Dtos;
+
 namespace ExaminationRooms.Web.Application.Mapper
 {
     using ExaminationRooms.Domain.ExaminationRoomAggregate;

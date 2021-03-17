@@ -20,7 +20,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
         {
 
             var request = new HttpRequestMessage(HttpMethod.Get,
-            $"https://localhost:44391/examination-rooms");
+            "https://localhost:44391/examination-rooms");
             request.Headers.Add("Accept", "application/json");
 
             var client = clientFactory.CreateClient();

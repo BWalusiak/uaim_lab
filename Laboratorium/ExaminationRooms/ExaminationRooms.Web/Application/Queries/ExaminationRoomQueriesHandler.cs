@@ -1,29 +1,28 @@
-namespace ExaminationRooms.Web.Application
-{
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using ExaminationRooms.Web.Application.Mapper;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using ExaminationRooms.Domain.ExaminationRoomAggregate;
+using ExaminationRooms.Web.Application.Dtos;
+using ExaminationRooms.Web.Application.Mapper;
 
+namespace ExaminationRooms.Web.Application.Queries
+{
     public class ExaminationRoomQueriesHandler : IExaminationRoomQueriesHandler
     {
-        private readonly IExaminationRoomsRepository examinationRoomsRepository;
+        private readonly IExaminationRoomsRepository _examinationRoomsRepository;
 
         public ExaminationRoomQueriesHandler(IExaminationRoomsRepository examinationRoomsRepository)
         {
-            this.examinationRoomsRepository = examinationRoomsRepository;
+            _examinationRoomsRepository = examinationRoomsRepository;
         }
 
         public IEnumerable<ExaminationRoomDto> GetAll()
         {
-            return examinationRoomsRepository.GetAll().Select(r=>r.Map());
+            return _examinationRoomsRepository.GetAll().Select(r=>r.Map());
         }
 
         public IEnumerable<ExaminationRoomDto> GetByCertificationType(int certificationType)
         {
-            return examinationRoomsRepository.GetByCertificationType(certificationType)?.Select(ld=>ld.Map());
+            return _examinationRoomsRepository.GetByCertificationType(certificationType)?.Select(ld=>ld.Map());
         }
     }
 }

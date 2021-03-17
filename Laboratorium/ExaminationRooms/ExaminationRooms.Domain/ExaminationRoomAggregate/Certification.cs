@@ -8,8 +8,8 @@ namespace ExaminationRooms.Domain.ExaminationRoomAggregate
 
     public class Certification : Entity
     {
-        public DateTime GrantedAt { get; private set; }
-        public int Type {get; private set;}
+        public DateTime GrantedAt { get; }
+        public int Type {get; }
 
         public Certification(int id, DateTime grantedAt, int type) : base(id)
         {

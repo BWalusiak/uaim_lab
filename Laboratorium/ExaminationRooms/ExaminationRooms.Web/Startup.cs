@@ -1,3 +1,6 @@
+using ExaminationRooms.Infrastructure.Repositories;
+using ExaminationRooms.Web.Application.Queries;
+
 namespace ExaminationRooms.Web
 {
     using ExaminationRooms.Domain;

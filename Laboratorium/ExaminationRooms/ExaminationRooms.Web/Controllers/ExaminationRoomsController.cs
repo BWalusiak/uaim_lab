@@ -1,3 +1,6 @@
+using ExaminationRooms.Web.Application.Dtos;
+using ExaminationRooms.Web.Application.Queries;
+
 namespace ExaminationRooms.Web.Controllers
 {
     using ExaminationRooms.Domain;

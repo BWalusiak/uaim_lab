@@ -1,10 +1,7 @@
-namespace ExaminationRooms.Web.Application
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+using System.Collections.Generic;
 
+namespace ExaminationRooms.Web.Application.Dtos
+{
     public class ExaminationRoomDto
     {
         public string Number { get; set; }

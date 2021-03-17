@@ -1,11 +1,8 @@
-namespace ExaminationRooms.Web.Application
-{
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+using System.Collections.Generic;
+using ExaminationRooms.Web.Application.Dtos;
 
+namespace ExaminationRooms.Web.Application.Queries
+{
     public interface IExaminationRoomQueriesHandler
     {
         IEnumerable<ExaminationRoomDto> GetAll();
