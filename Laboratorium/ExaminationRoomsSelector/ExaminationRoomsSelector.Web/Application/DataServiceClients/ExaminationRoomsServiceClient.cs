@@ -1,33 +1,31 @@
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
 namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 {
-    using ExaminationRoomsSelector.Web.Application.Dtos;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net.Http;
-    using System.Text.Json;
-    using System.Threading.Tasks;
-
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
-        public IHttpClientFactory clientFactory;
+        private readonly IHttpClientFactory _clientFactory;
+
         public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory)
         {
-            this.clientFactory = clientFactory;
+            _clientFactory = clientFactory;
         }
 
         public async Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync()
         {
-
             var request = new HttpRequestMessage(HttpMethod.Get,
-            "https://localhost:44391/examination-rooms");
+                "https://localhost:5001/examination-rooms");
             request.Headers.Add("Accept", "application/json");
 
-            var client = clientFactory.CreateClient();
+            var client = _clientFactory.CreateClient();
 
             var response = await client.SendAsync(request);
 
-            using var responseStream = await response.Content.ReadAsStreamAsync();
+            await using var responseStream = await response.Content.ReadAsStreamAsync();
 
             var options = new JsonSerializerOptions
             {
@@ -38,4 +36,3 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
         }
     }
 }
-

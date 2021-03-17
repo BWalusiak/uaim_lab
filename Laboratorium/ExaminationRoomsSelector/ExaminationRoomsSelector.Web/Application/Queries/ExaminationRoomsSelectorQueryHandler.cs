@@ -8,20 +8,20 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
 
     public class ExaminationRoomsSelectorQueryHandler : IExaminationRoomsSelectorHandler
     {
-        private readonly IExaminationRoomsServiceClient examinationRoomsServiceClient;
-        private readonly IDoctorsServiceClient doctorsServiceClient;
+        private readonly IExaminationRoomsServiceClient _examinationRoomsServiceClient;
+        private readonly IDoctorsServiceClient _doctorsServiceClient;
 
         public ExaminationRoomsSelectorQueryHandler(IExaminationRoomsServiceClient examinationRoomsServiceClient, IDoctorsServiceClient doctorsServiceClient)
         {
-            this.examinationRoomsServiceClient = examinationRoomsServiceClient;
-            this.doctorsServiceClient = doctorsServiceClient;
+            _examinationRoomsServiceClient = examinationRoomsServiceClient;
+            _doctorsServiceClient = doctorsServiceClient;
         }
 
         public async Task<int> GetExaminationRoomsSelectionAsync()
         {  
-            var doctors = doctorsServiceClient.GetAllDoctors();
+            var doctors = await _doctorsServiceClient.GetAllDoctorsAsync();
 
-            return (await examinationRoomsServiceClient.GetAllExaminationRoomsAsync()).Count();
+            return (await _examinationRoomsServiceClient.GetAllExaminationRoomsAsync()).Count();
         }
     }
 }
