@@ -3,10 +3,7 @@ using ExaminationRooms.Web.Application.Dtos;
 namespace ExaminationRooms.Web.Application.Mapper
 {
     using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
 
     public static class Mapper
     {

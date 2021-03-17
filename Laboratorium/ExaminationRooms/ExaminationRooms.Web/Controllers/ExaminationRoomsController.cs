@@ -16,25 +16,25 @@ namespace ExaminationRooms.Web.Controllers
     [ApiController]
     public class ExaminationRoomsController : ControllerBase
     {
-        private readonly ILogger<ExaminationRoomsController> logger;
-        private readonly IExaminationRoomQueriesHandler examinationRoomQueriesHandler;
+        private readonly ILogger<ExaminationRoomsController> _logger;
+        private readonly IExaminationRoomQueriesHandler _examinationRoomQueriesHandler;
 
         public ExaminationRoomsController(ILogger<ExaminationRoomsController> logger, IExaminationRoomQueriesHandler examinationRoomQueriesHandler)
         {
-            this.logger = logger;
-            this.examinationRoomQueriesHandler = examinationRoomQueriesHandler;
+            this._logger = logger;
+            this._examinationRoomQueriesHandler = examinationRoomQueriesHandler;
     }
 
         [HttpGet("examination-rooms")]
         public IEnumerable<ExaminationRoomDto> GetAll()
         {
-            return examinationRoomQueriesHandler.GetAll();
+            return _examinationRoomQueriesHandler.GetAll();
         }
 
         [HttpGet("examination-room")]
         public IEnumerable<ExaminationRoomDto> GetBySpecialization([FromQuery] int certificationType)
         {
-            return examinationRoomQueriesHandler.GetByCertificationType(certificationType);
+            return _examinationRoomQueriesHandler.GetByCertificationType(certificationType);
         }
     }
 }

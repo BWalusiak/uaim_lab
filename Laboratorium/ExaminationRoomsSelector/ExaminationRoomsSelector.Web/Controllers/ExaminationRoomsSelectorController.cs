@@ -11,19 +11,19 @@ namespace ExaminationRoomsSelector.Web.Controllers
     [ApiController]
     public class ExaminationRoomsSelectorController : ControllerBase
     {
-        private readonly ILogger<ExaminationRoomsSelectorController> logger;
-        private readonly IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler;
+        private readonly ILogger<ExaminationRoomsSelectorController> _logger;
+        private readonly IExaminationRoomsSelectorHandler _examinationRoomsSelectorHandler;
 
         public ExaminationRoomsSelectorController(ILogger<ExaminationRoomsSelectorController> logger, IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler)
         {
-            this.logger = logger;
-            this.examinationRoomsSelectorHandler = examinationRoomsSelectorHandler;
+            this._logger = logger;
+            this._examinationRoomsSelectorHandler = examinationRoomsSelectorHandler;
         }
 
         [HttpGet("examination-rooms-selection")]
         public async Task<int> GetLaboratoryDiagnosticiansDetails()
         {
-            return await examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
+            return await _examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
         }
     }
 }
