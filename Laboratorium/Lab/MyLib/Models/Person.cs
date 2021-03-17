@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace MyLib
+namespace MyLib.Models
 {
     public abstract class Person
     {

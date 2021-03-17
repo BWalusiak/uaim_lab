@@ -1,8 +1,10 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab", "Lab\Lab.csproj", "{4122E9C2-676B-40BA-891D-C7873647B84E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{4122E9C2-676B-40BA-891D-C7873647B84E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "MyLib\MyLib.csproj", "{2A2BF349-4512-4280-86ED-B61630876EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorWeb", "DoctorWeb\DoctorWeb.csproj", "{EC43B4DF-EE25-4E01-977D-EA24177B205B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{2A2BF349-4512-4280-86ED-B61630876EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A2BF349-4512-4280-86ED-B61630876EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A2BF349-4512-4280-86ED-B61630876EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC43B4DF-EE25-4E01-977D-EA24177B205B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC43B4DF-EE25-4E01-977D-EA24177B205B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC43B4DF-EE25-4E01-977D-EA24177B205B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC43B4DF-EE25-4E01-977D-EA24177B205B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

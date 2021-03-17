@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MyLib
+namespace MyLib.Models
 {
     public class Doctor : Person
     {
@@ -10,7 +10,7 @@ namespace MyLib
             Specializations = specializations;
         }
 
-        public bool IsSurgeon { get; set; }
+        public bool IsSurgeon { get; }
 
         public List<int> Specializations { get; }
 

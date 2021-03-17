@@ -1,4 +1,6 @@
-namespace MyLib
+using MyLib.Models;
+
+namespace MyLib.Repositories
 {
     public interface IPersonRepository
     {
