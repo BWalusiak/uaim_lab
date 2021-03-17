@@ -4,7 +4,7 @@ namespace MyLib.Models
 {
     public class Doctor : Person
     {
-        public Doctor(string name, bool isSurgeon, List<int> specializations) : base(name)
+        public Doctor(int id, string name, bool isSurgeon, List<int> specializations) : base(id, name)
         {
             IsSurgeon = isSurgeon;
             Specializations = specializations;
@@ -12,7 +12,7 @@ namespace MyLib.Models
 
         public bool IsSurgeon { get; }
 
-        public List<int> Specializations { get; }
+        public IList<int> Specializations { get; }
 
         public override bool CanOperate()
         {

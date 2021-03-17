@@ -2,11 +2,11 @@ using System.Diagnostics;
 
 namespace MyLib.Models
 {
-    public abstract class Person
+    public abstract class Person : Entity
     {
         #region Constructors
 
-        public Person(string name)
+        public Person(int id, string name) : base(id)
         {
             Name = name;
         }
