@@ -18,7 +18,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://localhost:44337/doctors");
+                "http://localhost:44500/doctors");
             request.Headers.Add("Accept", "application/json");
 
             var client = _clientFactory.CreateClient();

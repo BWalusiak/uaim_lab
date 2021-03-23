@@ -1,3 +1,5 @@
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
 namespace ExaminationRoomsSelector.Web.Application.Queries
 {
     using System;
@@ -7,6 +9,6 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
 
     public interface IExaminationRoomsSelectorHandler
     {
-        Task<int> GetExaminationRoomsSelectionAsync();
+        Task<IEnumerable<MatchDto>> GetExaminationRoomsSelectionAsync();
     }
 }

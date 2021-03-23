@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExaminationRoomsSelector.Web.Application.Dtos;
 
 namespace ExaminationRoomsSelector.Web.Controllers
 {
@@ -21,7 +22,7 @@ namespace ExaminationRoomsSelector.Web.Controllers
         }
 
         [HttpGet("examination-rooms-selection")]
-        public async Task<int> GetLaboratoryDiagnosticiansDetails()
+        public async Task<IEnumerable<MatchDto>> GetLaboratoryDiagnosticiansDetails()
         {
             return await _examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
         }

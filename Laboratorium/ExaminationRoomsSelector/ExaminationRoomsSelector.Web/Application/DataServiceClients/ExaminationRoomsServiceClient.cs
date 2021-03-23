@@ -18,7 +18,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
         public async Task<IEnumerable<ExaminationRoomDto>> GetAllExaminationRoomsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "https://localhost:5001/examination-rooms");
+                "http://localhost:44501/examination-rooms");
             request.Headers.Add("Accept", "application/json");
 
             var client = _clientFactory.CreateClient();
