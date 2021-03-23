@@ -15,7 +15,7 @@ namespace ExaminationRooms.Web.Application.Mapper
             return new ExaminationRoomDto
             {
                 Number = examinationRoom.Number,
-                Certifications = examinationRoom?.Certifications.Select(s => s.Type.ToString())
+                Certifications = examinationRoom?.Certifications.Select(s => s.Type)
             };
         }
     }

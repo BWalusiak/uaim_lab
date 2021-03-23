@@ -5,6 +5,6 @@ namespace ExaminationRoomsSelector.Web.Application.Dtos
     public class ExaminationRoomDto
     {
         public string Number { get; set; }
-        public IEnumerable<string> Certifications { get; set; }
+        public IEnumerable<int> Certifications { get; set; }
     }
 }
