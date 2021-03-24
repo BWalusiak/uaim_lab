@@ -1,8 +1,8 @@
 namespace Lab
 {
     using System;
-    using MyLib.Models;
-    using MyLib.Repositories;
+    using Doctors.Infrastructure.Models;
+    using Doctors.Infrastructure.Repositories;
 
     public class Program
     {
