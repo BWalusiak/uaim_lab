@@ -1,4 +1,4 @@
-namespace ExaminationRoomsSelector.Web
+namespace ExaminationRoomsSelector
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
