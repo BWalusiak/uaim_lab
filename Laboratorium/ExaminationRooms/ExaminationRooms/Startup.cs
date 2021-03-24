@@ -1,7 +1,6 @@
-namespace ExaminationRooms.Web
+namespace ExaminationRooms
 {
-    using Application.Queries;
-    using Domain.ExaminationRoomAggregate;
+    using Domain.Aggregate;
     using Infrastructure.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -9,6 +8,7 @@ namespace ExaminationRooms.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
+    using Web.Application.Queries;
 
     public class Startup
     {
@@ -26,7 +26,7 @@ namespace ExaminationRooms.Web
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRooms.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExaminationRooms", Version = "v1" });
             });
             services.AddSingleton<IExaminationRoomsRepository, ExaminationRoomsRepository>();
             services.AddTransient<IExaminationRoomQueriesHandler, ExaminationRoomQueriesHandler>();

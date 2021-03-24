@@ -10,8 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExaminationRooms.Domain\ExaminationRooms.Domain.csproj" />
-    <ProjectReference Include="..\ExaminationRooms.Infrastructure\ExaminationRooms.Infrastructure.csproj" />
+    <Folder Include="Domain" />
+    <Folder Include="Infrastructure" />
+    <Folder Include="Web" />
   </ItemGroup>
 
 </Project>

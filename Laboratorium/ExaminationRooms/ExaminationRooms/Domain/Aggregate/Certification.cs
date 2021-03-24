@@ -1,4 +1,4 @@
-namespace ExaminationRooms.Domain.ExaminationRoomAggregate
+namespace ExaminationRooms.Domain.Aggregate
 {
     using System;
     using SeedWork;

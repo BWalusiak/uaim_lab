@@ -3,7 +3,7 @@ namespace ExaminationRooms.Infrastructure.Repositories
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Domain.ExaminationRoomAggregate;
+    using Domain.Aggregate;
 
     public class ExaminationRoomsRepository : IExaminationRoomsRepository
     {
