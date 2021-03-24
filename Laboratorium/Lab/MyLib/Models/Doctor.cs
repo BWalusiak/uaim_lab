@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace MyLib.Models
 {
+    using System.Collections.Generic;
+
     public class Doctor : Person
     {
         public Doctor(int id, string name, bool isSurgeon, List<int> specializations) : base(id, name)

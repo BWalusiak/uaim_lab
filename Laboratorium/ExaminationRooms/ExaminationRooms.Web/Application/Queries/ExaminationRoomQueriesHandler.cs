@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
-using ExaminationRooms.Domain.ExaminationRoomAggregate;
-using ExaminationRooms.Web.Application.Dtos;
-using ExaminationRooms.Web.Application.Mapper;
-
 namespace ExaminationRooms.Web.Application.Queries
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Domain.ExaminationRoomAggregate;
+    using Dtos;
+    using Mapper;
+
     public class ExaminationRoomQueriesHandler : IExaminationRoomQueriesHandler
     {
         private readonly IExaminationRoomsRepository _examinationRoomsRepository;

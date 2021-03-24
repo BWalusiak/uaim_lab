@@ -1,7 +1,7 @@
-using System.Diagnostics;
-
 namespace MyLib.Models
 {
+    using System.Diagnostics;
+
     public abstract class Person : Entity
     {
         #region Constructors

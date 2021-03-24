@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MyLib.Models;
-
 namespace MyLib.Repositories
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Models;
+
     public class DoctorRepository : IDoctorRepository
     {
         private readonly Doctor[] _doctors =

@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using ExaminationRooms.Web.Application.Dtos;
-
 namespace ExaminationRooms.Web.Application.Queries
 {
+    using System.Collections.Generic;
+    using Dtos;
+
     public interface IExaminationRoomQueriesHandler
     {
         IEnumerable<ExaminationRoomDto> GetAll();

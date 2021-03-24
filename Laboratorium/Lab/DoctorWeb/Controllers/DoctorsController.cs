@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using DoctorWeb.Applictaion.Dtos;
-using DoctorWeb.Applictaion.Queries;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace DoctorWeb.Controllers
+﻿namespace DoctorWeb.Controllers
 {
+    using System.Collections.Generic;
+    using Applictaion.Dtos;
+    using Applictaion.Queries;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+
     [ApiController]
     public class DoctorsController : ControllerBase
     {

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace DoctorWeb.Applictaion.Dtos
+﻿namespace DoctorWeb.Applictaion.Dtos
 {
+    using System.Collections.Generic;
+
     public class DoctorDto
     {
         public int Id { get; set; }

@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace ExaminationRooms.Web.Application.Dtos
 {
+    using System.Collections.Generic;
+
     public class ExaminationRoomDto
     {
         public string Number { get; set; }

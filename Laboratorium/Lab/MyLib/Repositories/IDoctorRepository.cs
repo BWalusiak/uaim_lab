@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using MyLib.Models;
-
 namespace MyLib.Repositories
 {
+    using System.Collections.Generic;
+    using Models;
+
     public interface IDoctorRepository
     {
         IEnumerable<Doctor> GetBySpecialization(int specializtion);

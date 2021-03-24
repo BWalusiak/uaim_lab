@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using DoctorWeb.Applictaion.Dtos;
-
-namespace DoctorWeb.Applictaion.Queries
+﻿namespace DoctorWeb.Applictaion.Queries
 {
+    using System.Collections.Generic;
+    using Dtos;
+
     public interface IDoctorQueriesHandler
     {
         IEnumerable<DoctorDto> GetAll();
