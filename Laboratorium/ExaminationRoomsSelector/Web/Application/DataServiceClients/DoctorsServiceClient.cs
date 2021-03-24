@@ -9,7 +9,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
     public class DoctorsServiceClient : IDoctorsServiceClient
     {
         private readonly IHttpClientFactory _clientFactory;
-        
+
         public DoctorsServiceClient(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
@@ -18,7 +18,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "http://localhost:44500/doctors");
+                "http://doctors/doctors");
             request.Headers.Add("Accept", "application/json");
 
             var client = _clientFactory.CreateClient();
@@ -34,5 +34,10 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 
             return await JsonSerializer.DeserializeAsync<IEnumerable<DoctorDto>>(responseStream, options);
         }
+    }
+
+    public interface IDoctorsServiceClient
+    {
+        Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync();
     }
 }
