@@ -1,4 +1,4 @@
-namespace MyLib.Models
+namespace Doctors.Infrastructure.Models
 {
     public class Patient : Person
     {

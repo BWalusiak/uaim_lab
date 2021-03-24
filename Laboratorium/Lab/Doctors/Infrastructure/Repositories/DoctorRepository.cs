@@ -1,4 +1,4 @@
-namespace MyLib.Repositories
+namespace Doctors.Infrastructure.Repositories
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -21,5 +21,11 @@ namespace MyLib.Repositories
         {
             return _doctors;
         }
+    }
+
+    public interface IDoctorRepository
+    {
+        IEnumerable<Doctor> GetBySpecialization(int specializtion);
+        IEnumerable<Doctor> GetAll();
     }
 }

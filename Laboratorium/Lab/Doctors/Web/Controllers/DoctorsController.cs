@@ -1,4 +1,4 @@
-﻿namespace DoctorWeb.Controllers
+﻿namespace Doctors.Web.Controllers
 {
     using System.Collections.Generic;
     using Applictaion.Dtos;

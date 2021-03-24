@@ -1,4 +1,4 @@
-﻿namespace DoctorWeb.Applictaion.Dtos
+﻿namespace Doctors.Web.Applictaion.Dtos
 {
     using System.Collections.Generic;
 

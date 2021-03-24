@@ -1,4 +1,4 @@
-namespace DoctorWeb
+namespace Doctors
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;

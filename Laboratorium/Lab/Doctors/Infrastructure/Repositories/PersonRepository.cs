@@ -1,4 +1,4 @@
-namespace MyLib.Repositories
+namespace Doctors.Infrastructure.Repositories
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,5 +20,10 @@ namespace MyLib.Repositories
 
             return foundPersons.ToArray();
         }
+    }
+
+    public interface IPersonRepository
+    {
+        Person[] Find(Sex sex);
     }
 }

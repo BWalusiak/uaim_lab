@@ -1,13 +1,13 @@
-namespace DoctorWeb
+namespace Doctors
 {
-    using Applictaion.Queries;
+    using Infrastructure.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using MyLib.Repositories;
+    using Web.Applictaion.Queries;
 
     public class Startup
     {

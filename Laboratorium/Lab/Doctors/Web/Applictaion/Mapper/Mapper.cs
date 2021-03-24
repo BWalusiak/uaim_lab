@@ -1,7 +1,7 @@
-﻿namespace DoctorWeb.Applictaion.Mapper
+﻿namespace Doctors.Web.Applictaion.Mapper
 {
     using Dtos;
-    using MyLib.Models;
+    using Infrastructure.Models;
 
     public static class Mapper
     {
