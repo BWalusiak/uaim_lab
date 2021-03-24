@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using ExaminationRoomsSelector.Web.Application.Dtos;
-
 namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 {
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Text.Json;
+    using System.Threading.Tasks;
+    using Dtos;
+
     public class ExaminationRoomsServiceClient : IExaminationRoomsServiceClient
     {
         private readonly IHttpClientFactory _clientFactory;

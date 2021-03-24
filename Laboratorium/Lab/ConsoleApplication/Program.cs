@@ -1,10 +1,9 @@
-using System;
-using MyLib;
-using MyLib.Models;
-using MyLib.Repositories;
-
 namespace Lab
 {
+    using System;
+    using MyLib.Models;
+    using MyLib.Repositories;
+
     public class Program
     {
         public static void Main(string[] args)

@@ -1,17 +1,10 @@
-using ExaminationRooms.Web.Application.Dtos;
-using ExaminationRooms.Web.Application.Queries;
-
 namespace ExaminationRooms.Web.Controllers
 {
-    using ExaminationRooms.Domain;
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using ExaminationRooms.Web.Application;
+    using System.Collections.Generic;
+    using Application.Dtos;
+    using Application.Queries;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     [ApiController]
     public class ExaminationRoomsController : ControllerBase

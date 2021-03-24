@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using DoctorWeb.Applictaion.Dtos;
-using MyLib.Models;
-
-namespace DoctorWeb.Applictaion.Mapper
+﻿namespace DoctorWeb.Applictaion.Mapper
 {
+    using Dtos;
+    using MyLib.Models;
+
     public static class Mapper
     {
         public static DoctorDto Map(this Doctor doctor)

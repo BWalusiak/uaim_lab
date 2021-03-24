@@ -1,25 +1,14 @@
-using ExaminationRooms.Infrastructure.Repositories;
-using ExaminationRooms.Web.Application.Queries;
-
 namespace ExaminationRooms.Web
 {
-    using ExaminationRooms.Domain;
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
-    using ExaminationRooms.Infrastructure;
-    using ExaminationRooms.Web.Application;
+    using Application.Queries;
+    using Domain.ExaminationRoomAggregate;
+    using Infrastructure.Repositories;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.HttpsPolicy;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
     using Microsoft.OpenApi.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class Startup
     {

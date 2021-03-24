@@ -1,9 +1,8 @@
-using ExaminationRooms.Web.Application.Dtos;
-
 namespace ExaminationRooms.Web.Application.Mapper
 {
-    using ExaminationRooms.Domain.ExaminationRoomAggregate;
     using System.Linq;
+    using Domain.ExaminationRoomAggregate;
+    using Dtos;
 
     public static class Mapper
     {

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DoctorWeb.Applictaion.Dtos;
-using DoctorWeb.Applictaion.Mapper;
-using MyLib.Repositories;
-
-namespace DoctorWeb.Applictaion.Queries
+﻿namespace DoctorWeb.Applictaion.Queries
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Dtos;
+    using Mapper;
+    using MyLib.Repositories;
+
     public class DoctorQueriesHandler : IDoctorQueriesHandler
     {
         private readonly IDoctorRepository _doctorRepository;

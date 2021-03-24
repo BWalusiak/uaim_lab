@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ExaminationRooms.Domain.ExaminationRoomAggregate;
-
 namespace ExaminationRooms.Infrastructure.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Domain.ExaminationRoomAggregate;
+
     public class ExaminationRoomsRepository : IExaminationRoomsRepository
     {
         private static readonly ExaminationRoom[] ExaminationRooms = {
