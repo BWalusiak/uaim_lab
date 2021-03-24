@@ -1,6 +1,7 @@
-﻿using System;
-using System.Diagnostics;
+using System;
 using MyLib;
+using MyLib.Models;
+using MyLib.Repositories;
 
 namespace Lab
 {
@@ -9,8 +10,6 @@ namespace Lab
         public static void Main(string[] args)
         {
             IPersonRepository personRepository = new PersonRepository();
-
-            Debug.Assert(personRepository != null);
 
             foreach (var person in personRepository.Find(Sex.Male))
             {
