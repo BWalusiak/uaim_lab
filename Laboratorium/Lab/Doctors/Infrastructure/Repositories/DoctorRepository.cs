@@ -1,31 +1,74 @@
 namespace Doctors.Infrastructure.Repositories
 {
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Xml;
+    using System.Xml.Linq;
+    using System.Xml.Serialization;
     using Models;
+    using Web.Applictaion.Dtos;
 
     public class DoctorRepository : IDoctorRepository
     {
-        private readonly Doctor[] _doctors =
-        {
-            new(1, "Stefan Nowak", true, new List<int> {1, 5, 6}) {Sex = Sex.Male},
-            new(2, "Marianna Kowalska", false, new List<int> {7, 6, 9}) {Sex = Sex.Female}
-        };
 
-        public IEnumerable<Doctor> GetBySpecialization(int specializtion)
+        public IEnumerable<Doctor> GetBySpecialization(int specialization)
         {
-            return _doctors.Where(d => d.Specializations.Any(s => s == specializtion));
+            var document = XDocument.Load("Resources/database.xml");
+
+            var xmlSerializer = new XmlSerializer(typeof(Database));
+
+            var database = xmlSerializer.Deserialize(document.CreateReader()) as Database;
+            return database?.Doctors.Where(it => it.Specializations.Contains(specialization));
         }
 
         public IEnumerable<Doctor> GetAll()
         {
-            return _doctors;
+            var document = XDocument.Load("Resources/database.xml");
+
+            var xmlSerializer = new XmlSerializer(typeof(Database));
+
+            var database = xmlSerializer.Deserialize(document.CreateReader()) as Database;
+            return database?.Doctors;
+        }
+
+        public bool AddDoctor(DoctorDto doctorDto)
+        {
+            try
+            {
+                var document = XDocument.Load("Resources/database.xml");
+
+                var xmlSerializer = new XmlSerializer(typeof(Database));
+
+                var database = xmlSerializer.Deserialize(document.CreateReader()) as Database;
+                if (database?.Doctors != null)
+                {
+                    if (database.Doctors.Any(doctor => doctor.Id == doctorDto.Id))
+                    {
+                        return false;
+                    }
+
+                    database?.Doctors.Add(new Doctor(doctorDto));
+                }
+
+                var writer = new StreamWriter("Resources/database.xml");
+                xmlSerializer.Serialize(writer, database);
+
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
     }
 
     public interface IDoctorRepository
     {
-        IEnumerable<Doctor> GetBySpecialization(int specializtion);
+        IEnumerable<Doctor> GetBySpecialization(int specialization);
         IEnumerable<Doctor> GetAll();
+
+        bool AddDoctor(DoctorDto doctorDto);
     }
 }

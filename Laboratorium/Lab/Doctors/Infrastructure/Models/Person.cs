@@ -2,12 +2,17 @@ namespace Doctors.Infrastructure.Models
 {
     using System.Diagnostics;
 
-    public abstract class Person : Entity
+    public abstract class Person
     {
         #region Constructors
 
-        public Person(int id, string name) : base(id)
+        protected Person()
         {
+        }
+
+        public Person(int id, string name)
+        {
+            Id = id;
             Name = name;
         }
 
@@ -15,21 +20,11 @@ namespace Doctors.Infrastructure.Models
 
         #region Properties and Fields
 
+        public int Id { get; set; }
+
         public Sex Sex { get; set; }
 
-        public string Name
-        {
-            get => _name;
-
-            internal set
-            {
-                Debug.Assert(!string.IsNullOrWhiteSpace(value));
-
-                _name = value;
-            }
-        }
-
-        private string _name;
+        public string Name { get; set; }
 
         #endregion
 

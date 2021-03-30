@@ -24,11 +24,18 @@
         {
             return _doctorRepository.GetBySpecialization(specialization)?.Select(ld => ld.Map());
         }
+
+        public bool AddDoctor(DoctorDto doctorDto)
+        {
+            return _doctorRepository.AddDoctor(doctorDto);
+        }
     }
 
     public interface IDoctorQueriesHandler
     {
         IEnumerable<DoctorDto> GetAll();
         IEnumerable<DoctorDto> GetBySpecialization(int specialization);
+
+        bool AddDoctor(DoctorDto doctorDto);
     }
 }
