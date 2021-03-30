@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd">
+    <rooms>
+        <room>
+            <number>D123</number>
+            <certifications>
+                <certification>5</certification>
+                <certification>3</certification>
+                <certification>2</certification>
+                <certification>9</certification>
+            </certifications>
+        </room>
+        <room>
+            <number>A98</number>
+            <certifications>
+                <certification>0</certification>
+                <certification>3</certification>
+                <certification>5</certification>
+                <certification>2</certification>
+                <certification>7</certification>
+                <certification>1</certification>
+            </certifications>
+        </room>
+        <room>
+            <number>B154</number>
+            <certifications>
+                <certification>5</certification>
+                <certification>3</certification>
+                <certification>1</certification>
+            </certifications>
+        </room>
+    </rooms>
+</database>
