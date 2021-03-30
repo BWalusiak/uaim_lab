@@ -1,0 +1,48 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="database" type="DatabaseType"/>
+
+    <xs:complexType name="DatabaseType">
+        <xs:sequence>
+            <xs:element name="doctors" type="DoctorsType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="doctors" type="DoctorsType"/>
+
+    <xs:complexType name="DoctorsType">
+        <xs:sequence>
+            <xs:element name="doctor" type="DoctorType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DoctorType">
+        <xs:complexContent>
+            <xs:extension base="PersonType">
+                <xs:sequence>
+                    <xs:element name="specializations" type="SpecializationsType" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="PersonType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="sex" type="SexType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="SpecializationsType">
+        <xs:sequence>
+            <xs:element name="specialization" type="xs:nonNegativeInteger" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SexType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="male"/>
+            <xs:enumeration value="female"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

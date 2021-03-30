@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd">
+    <doctors>
+        <doctor>
+            <name>Małomir Brzę</name>
+            <sex>female</sex>
+            <specializations>
+                <specialization>1</specialization>
+                <specialization>2</specialization>
+                <specialization>3</specialization>
+                <specialization>2</specialization>
+                <specialization>9</specialization>
+            </specializations>
+        </doctor>
+        <doctor>
+            <name>Borzymir</name>
+            <sex>male</sex>
+            <specializations>
+                <specialization>4</specialization>
+                <specialization>8</specialization>
+                <specialization>1</specialization>
+            </specializations>
+        </doctor>
+        <doctor>
+            <name>Ksawery</name>
+            <sex>male</sex>
+            <specializations>
+                <specialization>9</specialization>
+                <specialization>7</specialization>
+                <specialization>1</specialization>
+                <specialization>8</specialization>
+                <specialization>3</specialization>
+            </specializations>
+        </doctor>
+    </doctors>
+</database>
