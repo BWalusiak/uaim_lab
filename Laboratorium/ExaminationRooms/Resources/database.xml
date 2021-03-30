@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd">
+    <ExaminationRooms>
+        <ExaminationRoom>
+            <Number>D123</Number>
+            <Certifications>
+                <Certification>
+                    <Type>1</Type>
+                    <GrantedAt>2002-09-24</GrantedAt>
+                </Certification>
+                <Certification>
+                    <Type>5</Type>
+                    <GrantedAt>2002-09-24</GrantedAt>
+                </Certification>
+            </Certifications>
+        </ExaminationRoom>
+        <ExaminationRoom>
+            <Number>B154</Number>
+            <Certifications>
+                <Certification>
+                    <Type>6</Type>
+                    <GrantedAt>2002-09-24</GrantedAt>
+                </Certification>
+                <Certification>
+                    <Type>2</Type>
+                    <GrantedAt>2002-09-24</GrantedAt>
+                </Certification>
+                <Certification>
+                    <Type>1</Type>
+                    <GrantedAt>2002-09-24</GrantedAt>
+                </Certification>
+            </Certifications>
+        </ExaminationRoom>
+    </ExaminationRooms>
+</Database>

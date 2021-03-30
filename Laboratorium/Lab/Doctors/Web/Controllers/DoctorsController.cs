@@ -18,6 +18,12 @@
             _doctorQueriesHandler = doctorQueriesHandler;
         }
 
+        [HttpPost("doctor")]
+        public bool AddDoctor(DoctorDto doctorDto)
+        {
+            return _doctorQueriesHandler.AddDoctor(doctorDto);
+        }
+
         [HttpGet("doctors")]
         public IEnumerable<DoctorDto> GetAll()
         {

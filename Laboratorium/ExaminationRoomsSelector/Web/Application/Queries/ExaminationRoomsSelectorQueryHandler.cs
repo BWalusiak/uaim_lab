@@ -27,6 +27,11 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
             return await Task.FromResult(matches);
         }
 
+        public void AddDoctor(DoctorDto doctorDto)
+        {
+            _doctorsServiceClient.AddDoctor(doctorDto);
+        }
+
         private static IEnumerable<MatchDto> MatchDoctorsRooms(List<DoctorDto> doctorDtos,
             List<ExaminationRoomDto> examinationRoomDtos)
         {
@@ -66,5 +71,6 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
     public interface IExaminationRoomsSelectorHandler
     {
         Task<IEnumerable<MatchDto>> GetExaminationRoomsSelectionAsync();
+        void AddDoctor(DoctorDto doctorDto);
     }
 }

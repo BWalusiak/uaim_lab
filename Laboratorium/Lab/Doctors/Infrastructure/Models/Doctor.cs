@@ -1,22 +1,33 @@
 namespace Doctors.Infrastructure.Models
 {
     using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Web.Applictaion.Dtos;
 
+    [XmlRoot("doctor", IsNullable = false)]
     public class Doctor : Person
     {
-        public Doctor(int id, string name, bool isSurgeon, List<int> specializations) : base(id, name)
+        public Doctor()
         {
-            IsSurgeon = isSurgeon;
+        }
+
+        public Doctor(int id, string name, List<int> specializations) : base(id, name)
+        {
             Specializations = specializations;
         }
 
-        public bool IsSurgeon { get; }
+        public Doctor(DoctorDto doctorDto) : base(doctorDto.Id, doctorDto.Name)
+        {
+            Specializations = doctorDto.Specializations as List<int>;
+        }
 
-        public IList<int> Specializations { get; }
+
+        [XmlArrayItem("Specialization")]
+        public List<int> Specializations { get; set; }
 
         public override bool CanOperate()
         {
-            return IsSurgeon;
+            return true;
         }
 
         public override string GetDescription()
