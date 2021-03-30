@@ -24,5 +24,13 @@ namespace ExaminationRoomsSelector.Web.Controllers
         {
             return await _examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
         }
+        
+        [HttpPost("add-doctor")]
+        public async void AddDoctor(DoctorDto doctorDto)
+        {
+            _examinationRoomsSelectorHandler.AddDoctor(doctorDto);
+        }
+
+
     }
 }

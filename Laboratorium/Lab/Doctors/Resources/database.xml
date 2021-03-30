@@ -51,5 +51,13 @@
         <Specialization>0</Specialization>
       </Specializations>
     </Doctor>
+    <Doctor>
+      <Id>5</Id>
+      <Sex>Male</Sex>
+      <Name>string</Name>
+      <Specializations>
+        <Specialization>0</Specialization>
+      </Specializations>
+    </Doctor>
   </Doctors>
 </Database>

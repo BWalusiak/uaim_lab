@@ -2,6 +2,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 {
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Text;
     using System.Text.Json;
     using System.Threading.Tasks;
     using Configuration;
@@ -38,10 +39,25 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 
             return await JsonSerializer.DeserializeAsync<IEnumerable<DoctorDto>>(responseStream, options);
         }
+
+        public void AddDoctor(DoctorDto doctorDto)
+        {
+            var jsonString = JsonSerializer.Serialize(doctorDto);
+
+            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+            var client = _clientFactory.CreateClient();
+
+            var url = $"{_serviceConfiguration.DoctorsUrl}/doctor";
+
+            var result = client.PostAsync(url, content).Result;
+
+        }
     }
 
     public interface IDoctorsServiceClient
     {
         Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync();
+        void AddDoctor(DoctorDto doctorDto);
     }
 }
