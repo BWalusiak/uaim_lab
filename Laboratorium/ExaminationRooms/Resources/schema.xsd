@@ -1,10 +1,10 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="database" type="DatabaseType"/>
+    <xs:element name="Database" type="DatabaseType"/>
 
     <xs:complexType name="DatabaseType">
         <xs:sequence>
-            <xs:element name="rooms" type="RoomsType"/>
+            <xs:element name="ExaminationRooms" type="RoomsType"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -12,20 +12,28 @@
 
     <xs:complexType name="RoomsType">
         <xs:sequence>
-            <xs:element name="room" type="RoomType" maxOccurs="unbounded"/>
+            <xs:element name="ExaminationRoom" type="RoomType" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="RoomType">
         <xs:sequence>
-            <xs:element name="number" type="xs:string"/>
-            <xs:element name="certifications" type="CertificationsType"/>
+            <xs:element name="Number" type="xs:string"/>
+            <xs:element name="Certifications" type="CertificationsType"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="CertificationsType">
         <xs:sequence>
-            <xs:element name="certification" type="xs:nonNegativeInteger" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="Certification" type="CertificationType" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="CertificationType">
+        <xs:sequence>
+            <xs:element name="Type" type="xs:nonNegativeInteger"/>
+            <xs:element name="GrantedAt" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
     

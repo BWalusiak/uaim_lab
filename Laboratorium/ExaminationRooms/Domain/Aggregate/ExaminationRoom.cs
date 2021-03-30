@@ -1,19 +1,26 @@
 namespace ExaminationRooms.Domain.Aggregate
 {
     using System.Collections.Generic;
+    using System.Xml.Serialization;
     using SeedWork;
 
+    [XmlRoot("examinationRoom", IsNullable = false)]
     public class ExaminationRoom : Entity
     {
-        public string Number { get; private set; }
-        public IList<Aggregate.Certification> Certifications { get; private set; } = new List<Aggregate.Certification>();
+        public ExaminationRoom()
+        {
+        }
+
+        public string Number { get; set; }
+        
+        public List<Certification> Certifications { get; set; }
 
         public ExaminationRoom(int id, string number) : base(id)
         {
             Number = number;
         }
 
-        public ExaminationRoom(int id, string number, IList<Aggregate.Certification> certifications) : this(id, number)
+        public ExaminationRoom(int id, string number, List<Aggregate.Certification> certifications) : this(id, number)
         {
             Certifications = certifications;
         }

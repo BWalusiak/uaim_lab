@@ -2,7 +2,11 @@ namespace ExaminationRooms.Domain.SeedWork
 {
     public abstract class Entity
     {
-        public int Id { get; protected set; }
+        protected Entity()
+        {
+        }
+
+        public int Id { get; set; }
 
         public Entity(int id) 
         {

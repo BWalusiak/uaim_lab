@@ -5,8 +5,12 @@ namespace ExaminationRooms.Domain.Aggregate
 
     public class Certification : Entity
     {
-        public DateTime GrantedAt { get; }
-        public int Type {get; }
+        public Certification()
+        {
+        }
+
+        public DateTime GrantedAt { get; set; }
+        public int Type {get; set; }
 
         public Certification(int id, DateTime grantedAt, int type) : base(id)
         {
