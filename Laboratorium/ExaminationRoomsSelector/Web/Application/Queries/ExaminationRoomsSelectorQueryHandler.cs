@@ -62,4 +62,9 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
             return bestRoom;
         }
     }
+
+    public interface IExaminationRoomsSelectorHandler
+    {
+        Task<IEnumerable<MatchDto>> GetExaminationRoomsSelectionAsync();
+    }
 }

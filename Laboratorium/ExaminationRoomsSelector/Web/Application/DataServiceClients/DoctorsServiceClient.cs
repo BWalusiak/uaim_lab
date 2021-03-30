@@ -4,21 +4,25 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
     using System.Net.Http;
     using System.Text.Json;
     using System.Threading.Tasks;
+    using Configuration;
     using Dtos;
+    using Microsoft.Extensions.Logging;
 
     public class DoctorsServiceClient : IDoctorsServiceClient
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly ServiceConfiguration _serviceConfiguration;
 
-        public DoctorsServiceClient(IHttpClientFactory clientFactory)
+        public DoctorsServiceClient(IHttpClientFactory clientFactory, ServiceConfiguration serviceConfiguration)
         {
             _clientFactory = clientFactory;
+            _serviceConfiguration = serviceConfiguration;
         }
 
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                "http://doctors/doctors");
+                $"{_serviceConfiguration.DoctorsUrl}/doctors");
             request.Headers.Add("Accept", "application/json");
 
             var client = _clientFactory.CreateClient();

@@ -15,8 +15,8 @@ namespace ExaminationRoomsSelector.Web.Controllers
 
         public ExaminationRoomsSelectorController(ILogger<ExaminationRoomsSelectorController> logger, IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler)
         {
-            this._logger = logger;
-            this._examinationRoomsSelectorHandler = examinationRoomsSelectorHandler;
+            _logger = logger;
+            _examinationRoomsSelectorHandler = examinationRoomsSelectorHandler;
         }
 
         [HttpGet("examination-rooms-selection")]

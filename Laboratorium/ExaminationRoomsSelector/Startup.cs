@@ -8,6 +8,7 @@ namespace ExaminationRoomsSelector
     using Microsoft.OpenApi.Models;
     using Web.Application.DataServiceClients;
     using Web.Application.Queries;
+    using Web.Configuration;
 
     public class Startup
     {
@@ -21,16 +22,17 @@ namespace ExaminationRoomsSelector
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LaboratoriesInventory.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Examination Room Selector", Version = "v1"});
             });
             services.AddHttpClient();
             services.AddTransient<IExaminationRoomsSelectorHandler, ExaminationRoomsSelectorQueryHandler>();
             services.AddTransient<IExaminationRoomsServiceClient, ExaminationRoomsServiceClient>();
             services.AddTransient<IDoctorsServiceClient, DoctorsServiceClient>();
+
+            services.AddSingleton(Configuration.GetSection("ServiceConfiguration").Get<ServiceConfiguration>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,10 +51,7 @@ namespace ExaminationRoomsSelector
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
