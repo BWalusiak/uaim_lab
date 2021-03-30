@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  roomselector:
+    build:
+      context: ./ExaminationRoomsSelector
+    ports:
+      - "8080:80"
+    environment:
+      EXM_ROOM_SEL_ServiceConfiguration__DoctorsUrl: "http://doctors"
+      EXM_ROOM_SEL_ServiceConfiguration__RoomsUrl: "http://rooms"
+
+  rooms:
+    build:
+      context: ./ExaminationRooms
+
+  doctors:
+    build:
+      context: ./Lab/Doctors
+
