@@ -1,5 +1,6 @@
 namespace ExaminationRoomsSelector.Web.Logic.Selection
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Application.Dtos;
@@ -7,37 +8,37 @@ namespace ExaminationRoomsSelector.Web.Logic.Selection
 
     public class ExaminationRoomSelector : IExaminationRoomSelector
     {
-        private IEnumerable<DoctorDto> _doctors;
-        private ICollection<ExaminationRoomDto> _examinationRooms;
+        private readonly IEnumerable<DoctorDto> _doctors;
+        private readonly IEnumerable<ExaminationRoomDto> _examinationRooms;
 
-        public ExaminationRoomSelector(ICollection<ExaminationRoomDto> examinationRooms, IEnumerable<DoctorDto> doctors)
+        public ExaminationRoomSelector(IEnumerable<ExaminationRoomDto> examinationRooms, IEnumerable<DoctorDto> doctors)
         {
-            _examinationRooms = examinationRooms;
-            _doctors = doctors;
+            _examinationRooms = examinationRooms ?? throw new ArgumentNullException(nameof(examinationRooms));
+            _doctors = doctors ?? throw new ArgumentNullException(nameof(doctors));
         }
 
         public IEnumerable<MatchDto> MatchDoctorsRooms()
         {
             var matches = new List<MatchDto>();
-
+            var rooms = new List<ExaminationRoomDto>(_examinationRooms);
             _doctors.ForEach(it =>
             {
-                var bestRoom = GetBestRoom(it);
+                var bestRoom = GetBestRoom(it ,rooms);
                 if (bestRoom != null)
                 {
                     matches.Add(new MatchDto(it, bestRoom));
-                    _examinationRooms.Remove(bestRoom);
+                    rooms.Remove(bestRoom);
                 }
             });
 
             return matches;
         }
 
-        public ExaminationRoomDto GetBestRoom(DoctorDto doctorDto)
+        private ExaminationRoomDto GetBestRoom(DoctorDto doctorDto, IEnumerable<ExaminationRoomDto> rooms)
         {
             ExaminationRoomDto bestRoom = null;
             int intersections = 0;
-            foreach (var roomDto in _examinationRooms)
+            foreach (var roomDto in rooms)
             {
                 var count = roomDto.Certifications.Intersect(doctorDto.Specializations).ToList().Count;
                 if (count > intersections)
@@ -54,6 +55,5 @@ namespace ExaminationRoomsSelector.Web.Logic.Selection
     interface IExaminationRoomSelector
     {
         public IEnumerable<MatchDto> MatchDoctorsRooms();
-        public ExaminationRoomDto GetBestRoom(DoctorDto doctorDto);
     }
 }
