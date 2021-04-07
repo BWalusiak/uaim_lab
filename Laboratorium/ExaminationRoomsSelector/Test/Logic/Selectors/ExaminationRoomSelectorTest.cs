@@ -32,6 +32,7 @@ namespace ExaminationRoomsSelector.Test.Logic.Selectors
         public void ShouldThrowArgumentNullExceptionWhenPassingNullExaminationRoomEnumerable()
         {
             // Arrange & Act
+            // ReSharper disable once ObjectCreationAsStatement
             Action act = () => new ExaminationRoomSelector(null, _doctors);
 
             // Assert
@@ -42,6 +43,7 @@ namespace ExaminationRoomsSelector.Test.Logic.Selectors
         public void ShouldThrowArgumentNullExceptionWhenPassingNullDoctorsEnumerable()
         {
             // Arrange & Act
+            // ReSharper disable once ObjectCreationAsStatement
             Action act = () => new ExaminationRoomSelector(_rooms, null);
 
             // Assert
