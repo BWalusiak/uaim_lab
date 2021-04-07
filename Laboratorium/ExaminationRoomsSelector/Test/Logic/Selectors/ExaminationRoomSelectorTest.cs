@@ -36,7 +36,7 @@ namespace ExaminationRoomsSelector.Test.Logic.Selectors
             Action act = () => new ExaminationRoomSelector(null, _doctors);
 
             // Assert
-            act.Should().ThrowExactly<ArgumentNullException>().Which.Message.Should().Contain("examinationRooms");
+            act.Should().ThrowExactly<ArgumentNullException>().WithMessage("*examinationRooms*");
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace ExaminationRoomsSelector.Test.Logic.Selectors
             Action act = () => new ExaminationRoomSelector(_rooms, null);
 
             // Assert
-            act.Should().ThrowExactly<ArgumentNullException>().Which.Message.Should().Contain("doctors");
+            act.Should().ThrowExactly<ArgumentNullException>().WithMessage("*doctors*");
         }
     }
 }
