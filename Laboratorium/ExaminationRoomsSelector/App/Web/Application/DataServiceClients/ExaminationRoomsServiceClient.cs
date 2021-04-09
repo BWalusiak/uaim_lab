@@ -12,7 +12,8 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
         private readonly IHttpClientFactory _clientFactory;
         private readonly ServiceConfiguration _serviceConfiguration;
 
-        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory, ServiceConfiguration serviceConfiguration)
+        public ExaminationRoomsServiceClient(IHttpClientFactory clientFactory,
+            ServiceConfiguration serviceConfiguration)
         {
             _clientFactory = clientFactory;
             _serviceConfiguration = serviceConfiguration;
@@ -32,7 +33,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 
             var options = new JsonSerializerOptions
             {
-                PropertyNameCaseInsensitive = true,
+                PropertyNameCaseInsensitive = true
             };
 
             return await JsonSerializer.DeserializeAsync<IEnumerable<ExaminationRoomDto>>(responseStream, options);

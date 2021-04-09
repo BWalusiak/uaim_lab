@@ -10,10 +10,11 @@ namespace ExaminationRoomsSelector.Web.Controllers
     [ApiController]
     public class ExaminationRoomsSelectorController : ControllerBase
     {
-        private readonly ILogger<ExaminationRoomsSelectorController> _logger;
         private readonly IExaminationRoomsSelectorHandler _examinationRoomsSelectorHandler;
+        private readonly ILogger<ExaminationRoomsSelectorController> _logger;
 
-        public ExaminationRoomsSelectorController(ILogger<ExaminationRoomsSelectorController> logger, IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler)
+        public ExaminationRoomsSelectorController(ILogger<ExaminationRoomsSelectorController> logger,
+            IExaminationRoomsSelectorHandler examinationRoomsSelectorHandler)
         {
             _logger = logger;
             _examinationRoomsSelectorHandler = examinationRoomsSelectorHandler;
@@ -24,13 +25,11 @@ namespace ExaminationRoomsSelector.Web.Controllers
         {
             return await _examinationRoomsSelectorHandler.GetExaminationRoomsSelectionAsync();
         }
-        
+
         [HttpPost("add-doctor")]
         public async void AddDoctor(DoctorDto doctorDto)
         {
             _examinationRoomsSelectorHandler.AddDoctor(doctorDto);
         }
-
-
     }
 }
