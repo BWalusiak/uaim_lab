@@ -9,8 +9,8 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
 
     public class ExaminationRoomsSelectorQueryHandler : IExaminationRoomsSelectorHandler
     {
-        private readonly IExaminationRoomsServiceClient _examinationRoomsServiceClient;
         private readonly IDoctorsServiceClient _doctorsServiceClient;
+        private readonly IExaminationRoomsServiceClient _examinationRoomsServiceClient;
 
         public ExaminationRoomsSelectorQueryHandler(IExaminationRoomsServiceClient examinationRoomsServiceClient,
             IDoctorsServiceClient doctorsServiceClient)
@@ -33,7 +33,6 @@ namespace ExaminationRoomsSelector.Web.Application.Queries
         {
             _doctorsServiceClient.AddDoctor(doctorDto);
         }
-
     }
 
     public interface IExaminationRoomsSelectorHandler

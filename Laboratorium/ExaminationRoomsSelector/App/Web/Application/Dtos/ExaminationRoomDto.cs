@@ -16,13 +16,13 @@ namespace ExaminationRoomsSelector.Web.Application.Dtos
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((ExaminationRoomDto) obj);
         }
 
         public override int GetHashCode()
         {
-            return (Number != null ? Number.GetHashCode() : 0);
+            return Number != null ? Number.GetHashCode() : 0;
         }
     }
 }

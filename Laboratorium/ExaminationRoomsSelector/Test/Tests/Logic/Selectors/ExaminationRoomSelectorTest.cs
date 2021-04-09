@@ -80,52 +80,52 @@ namespace ExaminationRoomsSelector.Test.Tests.Logic.Selectors
             {
                 new object[]
                 {
-                    new []
+                    new[]
                     {
-                        new ExaminationRoomDto {Number = "101", Certifications = new []{1,2,3}},
-                        new ExaminationRoomDto {Number = "102", Certifications = new []{5,6,7}},
-                        new ExaminationRoomDto {Number = "103", Certifications = new []{8,9,10}},
+                        new ExaminationRoomDto {Number = "101", Certifications = new[] {1, 2, 3}},
+                        new ExaminationRoomDto {Number = "102", Certifications = new[] {5, 6, 7}},
+                        new ExaminationRoomDto {Number = "103", Certifications = new[] {8, 9, 10}}
                     },
-                    new []
+                    new[]
                     {
-                        new DoctorDto {Id = 1, Name = "Jan", Specializations = new []{1,2,3}},
-                        new DoctorDto {Id = 1, Name = "Adam", Specializations = new []{4,5,6}},
-                        new DoctorDto {Id = 1, Name = "Maciek", Specializations = new []{8,9,10}},
+                        new DoctorDto {Id = 1, Name = "Jan", Specializations = new[] {1, 2, 3}},
+                        new DoctorDto {Id = 1, Name = "Adam", Specializations = new[] {4, 5, 6}},
+                        new DoctorDto {Id = 1, Name = "Maciek", Specializations = new[] {8, 9, 10}}
                     },
                     3
                 },
                 new object[]
                 {
-                    new []
+                    new[]
                     {
-                        new ExaminationRoomDto {Number = "101", Certifications = new []{2,3}},
-                        new ExaminationRoomDto {Number = "102", Certifications = new []{5,6,7}},
-                        new ExaminationRoomDto {Number = "103", Certifications = new []{8,9,10}},
+                        new ExaminationRoomDto {Number = "101", Certifications = new[] {2, 3}},
+                        new ExaminationRoomDto {Number = "102", Certifications = new[] {5, 6, 7}},
+                        new ExaminationRoomDto {Number = "103", Certifications = new[] {8, 9, 10}}
                     },
-                    new []
+                    new[]
                     {
-                        new DoctorDto {Id = 1, Name = "Marcin", Specializations = new []{1}},
-                        new DoctorDto {Id = 1, Name = "Adam", Specializations = new []{4,5,6}},
-                        new DoctorDto {Id = 1, Name = "Maciek", Specializations = new []{8,9,10}},
+                        new DoctorDto {Id = 1, Name = "Marcin", Specializations = new[] {1}},
+                        new DoctorDto {Id = 1, Name = "Adam", Specializations = new[] {4, 5, 6}},
+                        new DoctorDto {Id = 1, Name = "Maciek", Specializations = new[] {8, 9, 10}}
                     },
                     2
                 },
                 new object[]
                 {
-                    new []
+                    new[]
                     {
-                        new ExaminationRoomDto {Number = "101", Certifications = new []{1,2,3}},
-                        new ExaminationRoomDto {Number = "102", Certifications = new []{5,6,7}},
-                        new ExaminationRoomDto {Number = "103", Certifications = new []{8,9,10}},
+                        new ExaminationRoomDto {Number = "101", Certifications = new[] {1, 2, 3}},
+                        new ExaminationRoomDto {Number = "102", Certifications = new[] {5, 6, 7}},
+                        new ExaminationRoomDto {Number = "103", Certifications = new[] {8, 9, 10}}
                     },
-                    new []
+                    new[]
                     {
-                        new DoctorDto {Id = 1, Name = "Jan", Specializations = new []{11,21,31}},
-                        new DoctorDto {Id = 1, Name = "Adam", Specializations = new []{41,51,61}},
-                        new DoctorDto {Id = 1, Name = "Maciek", Specializations = new []{81,91,101}},
+                        new DoctorDto {Id = 1, Name = "Jan", Specializations = new[] {11, 21, 31}},
+                        new DoctorDto {Id = 1, Name = "Adam", Specializations = new[] {41, 51, 61}},
+                        new DoctorDto {Id = 1, Name = "Maciek", Specializations = new[] {81, 91, 101}}
                     },
                     0
-                },
+                }
             };
             return allData.Take(numTests);
         }
@@ -136,7 +136,7 @@ namespace ExaminationRoomsSelector.Test.Tests.Logic.Selectors
             // Arrange
             var doctors = DoctorDtoProvider.Faker.Generate(1000);
             var rooms = ExaminationRoomDtoProvider.Faker.Generate(1000);
-            
+
             var selector = new ExaminationRoomSelector(rooms, doctors);
 
             // Act 

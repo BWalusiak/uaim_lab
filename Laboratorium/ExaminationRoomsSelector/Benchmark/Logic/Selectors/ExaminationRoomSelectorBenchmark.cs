@@ -11,8 +11,8 @@ namespace ExaminationRoomsSelector.Benchmark.Logic.Selectors
     [HtmlExporter]
     public class ExaminationRoomSelectorBenchmark
     {
-        private ExaminationRoomSelector _selector;
         private Consumer _consumer;
+        private ExaminationRoomSelector _selector;
 
         [Params(100, 500, 1000, 2500)] public int N;
 
@@ -27,6 +27,9 @@ namespace ExaminationRoomsSelector.Benchmark.Logic.Selectors
         }
 
         [Benchmark]
-        public void Run() => _selector.MatchDoctorsRooms().Consume(_consumer);
+        public void Run()
+        {
+            _selector.MatchDoctorsRooms().Consume(_consumer);
+        }
     }
 }

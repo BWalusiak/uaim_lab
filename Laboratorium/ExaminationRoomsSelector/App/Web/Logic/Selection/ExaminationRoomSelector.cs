@@ -23,7 +23,7 @@ namespace ExaminationRoomsSelector.Web.Logic.Selection
             var rooms = new List<ExaminationRoomDto>(_examinationRooms);
             _doctors.ForEach(it =>
             {
-                var bestRoom = GetBestRoom(it ,rooms);
+                var bestRoom = GetBestRoom(it, rooms);
                 if (bestRoom != null)
                 {
                     matches.Add(new MatchDto(it, bestRoom));
@@ -37,7 +37,7 @@ namespace ExaminationRoomsSelector.Web.Logic.Selection
         private ExaminationRoomDto GetBestRoom(DoctorDto doctorDto, IEnumerable<ExaminationRoomDto> rooms)
         {
             ExaminationRoomDto bestRoom = null;
-            int intersections = 0;
+            var intersections = 0;
             foreach (var roomDto in rooms)
             {
                 var count = roomDto.Certifications.Intersect(doctorDto.Specializations).ToList().Count;
@@ -52,7 +52,7 @@ namespace ExaminationRoomsSelector.Web.Logic.Selection
         }
     }
 
-    interface IExaminationRoomSelector
+    internal interface IExaminationRoomSelector
     {
         public IEnumerable<MatchDto> MatchDoctorsRooms();
     }

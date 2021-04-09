@@ -7,7 +7,6 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
     using System.Threading.Tasks;
     using Configuration;
     using Dtos;
-    using Microsoft.Extensions.Logging;
 
     public class DoctorsServiceClient : IDoctorsServiceClient
     {
@@ -34,7 +33,7 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
 
             var options = new JsonSerializerOptions
             {
-                PropertyNameCaseInsensitive = true,
+                PropertyNameCaseInsensitive = true
             };
 
             return await JsonSerializer.DeserializeAsync<IEnumerable<DoctorDto>>(responseStream, options);
@@ -51,7 +50,6 @@ namespace ExaminationRoomsSelector.Web.Application.DataServiceClients
             var url = $"{_serviceConfiguration.DoctorsUrl}/doctor";
 
             var result = client.PostAsync(url, content).Result;
-
         }
     }
 

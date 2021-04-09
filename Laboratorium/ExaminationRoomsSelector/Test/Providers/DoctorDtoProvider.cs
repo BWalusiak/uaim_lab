@@ -1,7 +1,6 @@
 ﻿namespace ExaminationRoomsSelector.Test.Providers
 {
     using System;
-    using System.Collections.Generic;
     using Bogus;
     using Web.Application.Dtos;
 
