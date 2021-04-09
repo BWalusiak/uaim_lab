@@ -14,7 +14,7 @@ namespace ExaminationRoomsSelector.Benchmark.Logic.Selectors
         private ExaminationRoomSelector _selector;
         private Consumer _consumer;
 
-        [Params(5000)] public int N;
+        [Params(100, 500, 1000, 2500)] public int N;
 
         [GlobalSetup]
         public void Setup()
