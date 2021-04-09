@@ -129,23 +129,5 @@ namespace ExaminationRoomsSelector.Test.Tests.Logic.Selectors
             };
             return allData.Take(numTests);
         }
-
-        [Fact(Timeout = 100)]
-        public static async Task ShouldNotTimeOutWhenProcessingLargeAmountsOfData()
-        {
-            // Arrange
-            var doctors = DoctorDtoProvider.Faker.Generate(1000);
-            var rooms = ExaminationRoomDtoProvider.Faker.Generate(1000);
-
-            var selector = new ExaminationRoomSelector(rooms, doctors);
-
-            // Act 
-            var matches = selector.MatchDoctorsRooms();
-
-            // Assert
-            var matchDtos = matches.ToList();
-            matchDtos.Should().OnlyHaveUniqueItems(o => o.Doctor.Id);
-            matchDtos.Should().OnlyHaveUniqueItems(o => o.ExaminationRoom.Number);
-        }
     }
 }
