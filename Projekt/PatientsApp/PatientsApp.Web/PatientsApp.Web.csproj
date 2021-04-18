@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>PatientsApp.Web</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PatientsApp.BusinessLogic\PatientsApp.BusinessLogic.csproj" />
+      <ProjectReference Include="..\PatientsApp.Infrastructure\PatientsApp.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
