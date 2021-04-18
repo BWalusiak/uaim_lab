@@ -28,9 +28,9 @@
 
         public async Task<IEnumerable<PatientDoctorDto>> GetBestPatientDoctorMatches()
         {
-            var doctors = await  _doctorsDataServiceClient.GetAllDoctors();
+            var doctors = await _doctorsDataServiceClient.GetAllDoctors();
             var patients = await _patientsQueryHandler.GetAllPatients();
-            
+
             return PatientSelector.GetBestPatientDoctorMatches(doctors, patients);
         }
     }

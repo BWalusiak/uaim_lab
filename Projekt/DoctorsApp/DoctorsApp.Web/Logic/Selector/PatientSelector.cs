@@ -9,7 +9,7 @@ namespace DoctorsApp.Web.Logic.Selector
         public static IEnumerable<PatientDto> GetPatientsThatDoctorCanTreat(DoctorDto doctorDto,
             IEnumerable<PatientDto> patientsDto)
         {
-            return patientsDto.Where(patientDto => patientDto.Conditions.Any(x => 
+            return patientsDto.Where(patientDto => patientDto.Conditions.Any(x =>
                     doctorDto.Specializations.Any(y => y.Type == x.Type)));
         }
 

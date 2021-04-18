@@ -24,7 +24,7 @@ namespace PatientsData.Web
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "PatientData.Web", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PatientData.Web", Version = "v1" });
             });
             services.AddSingleton<IPatientRepository, PatientRepository>();
             services.AddTransient<IPatientQueriesHandler, PatientQueriesHandler>();

@@ -19,7 +19,7 @@
                 Sex = patient.Sex.ToString(),
                 Pesel = patient.Pesel,
                 Conditions = patient?.Conditions.Select(c => new ConditionDto
-                    {Type = c.Type, DiagnosisDate = c.DiagnosisDate.Date}).ToList()
+                { Type = c.Type, DiagnosisDate = c.DiagnosisDate.Date }).ToList()
             };
         }
 
@@ -35,7 +35,7 @@
                 Sex = Enum.Parse<Sex>(patientDto.Sex),
                 Pesel = patientDto.Pesel,
                 Conditions = patientDto?.Conditions.Select(c => new Condition
-                    {Type = c.Type, DiagnosisDate = c.DiagnosisDate}).ToList()
+                { Type = c.Type, DiagnosisDate = c.DiagnosisDate }).ToList()
             };
         }
     }
