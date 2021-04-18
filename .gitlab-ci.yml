@@ -1,0 +1,77 @@
+image: mcr.microsoft.com/dotnet/sdk:5.0
+
+variables:
+  # 1) Name of directory where restore and build objects are stored.
+  OBJECTS_DIRECTORY: 'obj'
+  # 2) Name of directory used for keeping restored dependencies.
+  NUGET_PACKAGES_DIRECTORY: '.nuget'
+  # 3) A relative path to the source code from project repository root.
+  DD_SOURCE_CODE_PATH: 'Projekt/DoctorsData'
+  PA_SOURCE_CODE_PATH: 'Projekt/PatientsApp'
+
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:
+  - lint
+  - test
+  - build
+
+cache:
+  key: "$CI_JOB_STAGE-$CI_COMMIT_REF_SLUG"
+  paths:
+    - '$DD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
+    - '$DD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
+    - '$DA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
+    - '$DA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
+    - '$PD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
+    - '$PD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
+    - '$PA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
+    - '$PA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
+    - '$NUGET_PACKAGES_DIRECTORY'
+  policy: pull-push
+
+lint_dd:
+  stage: lint
+  script:
+    - 'cd $DD_SOURCE_CODE_PATH'
+    - 'dotnet tool restore'
+    - 'dotnet dotnet-format --check'
+
+tests_dd:
+  stage: test
+  script:
+    - 'cd $DD_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore'
+
+build_dd:
+  stage: build
+  script:
+    - 'cd $DD_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet build --no-restore'
+
+lint_pa:
+  stage: lint
+  script:
+    - 'cd $PA_SOURCE_CODE_PATH'
+    - 'dotnet tool restore'
+    - 'dotnet dotnet-format --check'
+
+tests_pa:
+  stage: test
+  script:
+    - 'cd $PA_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore'
+
+build_pa:
+  stage: build
+  script:
+    - 'cd $PA_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet build --no-restore'
