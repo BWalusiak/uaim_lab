@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsData.Domain", "PatientsData.Domain\PatientsData.Domain.csproj", "{2EE4CBCE-9CF6-4C7A-812A-17A31B977001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsData.Infrastructure", "PatientsData.Infrastructure\PatientsData.Infrastructure.csproj", "{6CA55615-2175-4157-A356-BD939D267370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsData.Web", "PatientsData.Web\PatientsData.Web.csproj", "{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EE4CBCE-9CF6-4C7A-812A-17A31B977001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE4CBCE-9CF6-4C7A-812A-17A31B977001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE4CBCE-9CF6-4C7A-812A-17A31B977001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE4CBCE-9CF6-4C7A-812A-17A31B977001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA55615-2175-4157-A356-BD939D267370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA55615-2175-4157-A356-BD939D267370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA55615-2175-4157-A356-BD939D267370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA55615-2175-4157-A356-BD939D267370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D9AD614-CDDC-4B53-892F-47FFB8074CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

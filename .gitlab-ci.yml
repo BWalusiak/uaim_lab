@@ -8,6 +8,8 @@ variables:
   # 3) A relative path to the source code from project repository root.
   DD_SOURCE_CODE_PATH: 'Projekt/DoctorsData'
   PA_SOURCE_CODE_PATH: 'Projekt/PatientsApp'
+  DA_SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
+  PD_SOURCE_CODE_PATH: 'Projekt/PatientsData'
 
 workflow:
   rules:
@@ -73,5 +75,47 @@ build_pa:
   stage: build
   script:
     - 'cd $PA_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet build --no-restore'
+
+lint_da:
+  stage: lint
+  script:
+    - 'cd $DA_SOURCE_CODE_PATH'
+    - 'dotnet tool restore'
+    - 'dotnet dotnet-format --check'
+
+tests_da:
+  stage: test
+  script:
+    - 'cd $DA_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore'
+
+build_da:
+  stage: build
+  script:
+    - 'cd $DA_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet build --no-restore'
+
+lint_pd:
+  stage: lint
+  script:
+    - 'cd $PD_SOURCE_CODE_PATH'
+    - 'dotnet tool restore'
+    - 'dotnet dotnet-format --check'
+
+tests_pd:
+  stage: test
+  script:
+    - 'cd $PD_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore'
+
+build_pd:
+  stage: build
+  script:
+    - 'cd $PD_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet build --no-restore'
