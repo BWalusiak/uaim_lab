@@ -1,0 +1,46 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="PatientsList" type="PatientsListType" />
+
+    <xs:complexType name="PatientsListType">
+        <xs:sequence>
+            <xs:element name="Patients" type="PatientsType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PatientsType">
+        <xs:sequence>
+            <xs:element name="Patient" type="PatientType" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PatientType">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:nonNegativeInteger" />
+            <xs:element name="Name" type="xs:string" />
+            <xs:element name="Sex" type="SexType" />
+            <xs:element name="Pesel" type="xs:string" />
+            <xs:element name="Conditions" type="ConditionsType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ConditionsType">
+        <xs:sequence>
+            <xs:element name="Condition" type="ConditionType" maxOccurs="unbounded" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ConditionType">
+        <xs:sequence>
+            <xs:element name="Type" type="xs:nonNegativeInteger" />
+            <xs:element name="DiagnosisDate" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SexType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Male" />
+            <xs:enumeration value="Female" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
