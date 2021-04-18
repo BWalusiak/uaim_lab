@@ -6,9 +6,9 @@ namespace DoctorsApp.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using Web.Application.DataServiceClients;
-    using Web.Application.Queries;
-    using Web.Configuration;
+    using Application.DataServiceClients;
+    using Application.Queries;
+    using Configuration;
 
     public class Startup
     {

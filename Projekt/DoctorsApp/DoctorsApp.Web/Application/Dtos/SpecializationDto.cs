@@ -5,7 +5,7 @@ namespace DoctorsApp.Web.Application.Dtos
     public class SpecializationDto
     {
         public int Type { get; set; }
-
+        
         public DateTime CertificationDate { get; set; }
     }
 }

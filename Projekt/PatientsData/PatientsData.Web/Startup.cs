@@ -7,7 +7,7 @@ namespace PatientsData.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
-    using Web.Application.Queries;
+    using Application.Queries;
 
     public class Startup
     {
@@ -24,7 +24,7 @@ namespace PatientsData.Web
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PatientData.Web", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "PatientData.Web", Version = "v1"});
             });
             services.AddSingleton<IPatientRepository, PatientRepository>();
             services.AddTransient<IPatientQueriesHandler, PatientQueriesHandler>();
