@@ -1,0 +1,14 @@
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.deps.json
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.pdb
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Utilities.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.pdb
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Utilities.pdb
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.csprojAssemblyReference.cache
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.AssemblyInfoInputs.cache
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.AssemblyInfo.cs
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.csproj.CoreCompileInputs.cache
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.csproj.CopyComplete
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Controller\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Controller.pdb

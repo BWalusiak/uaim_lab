@@ -1,0 +1,2 @@
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Logic\ZsutPwPatterns.WindowsApplication.Logic.csproj;x64
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication\ZsutPwPatterns.WindowsApplication.csproj;x64
