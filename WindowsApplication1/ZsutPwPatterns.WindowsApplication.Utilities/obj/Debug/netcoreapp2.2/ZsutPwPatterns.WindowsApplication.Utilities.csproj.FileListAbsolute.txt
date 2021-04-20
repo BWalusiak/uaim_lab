@@ -1,0 +1,4 @@
+C:\Artur\ZsutPwPatterns\CSharp\WindowsApplication\ZsutPwPatterns.WindowsApplication.Utilities\obj\Debug\netcoreapp2.2\ZsutPwPatterns.WindowsApplication.Utilities.csprojAssemblyReference.cache
+C:\Artur\ZsutPwPatterns\CSharp\WindowsApplication\ZsutPwPatterns.WindowsApplication.Utilities\obj\Debug\netcoreapp2.2\ZsutPwPatterns.WindowsApplication.Utilities.AssemblyInfoInputs.cache
+C:\Artur\ZsutPwPatterns\CSharp\WindowsApplication\ZsutPwPatterns.WindowsApplication.Utilities\obj\Debug\netcoreapp2.2\ZsutPwPatterns.WindowsApplication.Utilities.AssemblyInfo.cs
+C:\Artur\ZsutPwPatterns\CSharp\WindowsApplication\ZsutPwPatterns.WindowsApplication.Utilities\obj\Debug\netcoreapp2.2\ZsutPwPatterns.WindowsApplication.Utilities.csproj.CoreCompileInputs.cache

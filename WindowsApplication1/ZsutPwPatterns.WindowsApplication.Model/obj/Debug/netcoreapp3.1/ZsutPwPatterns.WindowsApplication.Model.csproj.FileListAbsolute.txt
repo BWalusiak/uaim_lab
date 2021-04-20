@@ -1,0 +1,12 @@
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.deps.json
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.pdb
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Utilities.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\bin\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Utilities.pdb
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.csprojAssemblyReference.cache
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.AssemblyInfoInputs.cache
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.AssemblyInfo.cs
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.csproj.CoreCompileInputs.cache
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.csproj.CopyComplete
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.dll
+C:\Dev\C#\WindowsApplication1\ZsutPwPatterns.WindowsApplication.Model\obj\Debug\netcoreapp3.1\ZsutPwPatterns.WindowsApplication.Model.pdb
