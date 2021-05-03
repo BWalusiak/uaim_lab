@@ -23,16 +23,10 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   {
     public static INetwork GetNetworkClient( )
     {
-#if DEBUG
-      return new FakeNetworkClient( );
-
-#else
       const string serviceHost = "localhost";
       const int servicePort = 44328;
 
       return new NetworkClient( serviceHost, servicePort );
-
-#endif
     }
   }
 }

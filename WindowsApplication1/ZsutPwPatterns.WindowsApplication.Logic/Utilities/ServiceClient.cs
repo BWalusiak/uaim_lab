@@ -20,7 +20,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
   using System.Threading.Tasks;
 
   using System.Net.Http;
-  using System.Text.Json;
+  using Newtonsoft.Json;
 
   public class ServiceClient
   {
@@ -78,7 +78,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
     private T ConvertJson<T>( string json )
     {
-      return JsonSerializer.Deserialize<T>( json );
+      return JsonConvert.DeserializeObject<T>(json);
     }
   }
 }

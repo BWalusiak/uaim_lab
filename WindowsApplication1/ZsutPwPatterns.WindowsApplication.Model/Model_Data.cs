@@ -11,6 +11,8 @@
 //
 //===============================================================================
 
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
 namespace ZsutPw.Patterns.WindowsApplication.Model
 {
   using System;
@@ -33,7 +35,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
     }
     private string searchText;
 
-    public List<NodeData> NodeList
+    public List<MatchDto> NodeList
     {
       get { return this.nodeList; }
       private set
@@ -43,9 +45,9 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
         this.RaisePropertyChanged( "NodeList" );
       }
     }
-    private List<NodeData> nodeList = new List<NodeData>( );
+    private List<MatchDto> nodeList = new List<MatchDto>( );
 
-    public NodeData SelectedNode
+    public MatchDto SelectedNode
     {
       get { return this.selectedNode; }
       set
@@ -55,6 +57,6 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
         this.RaisePropertyChanged( "SelectedNode" );
       }
     }
-    private NodeData selectedNode;
+    private MatchDto selectedNode;
   }
 }

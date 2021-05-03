@@ -11,6 +11,8 @@
 //
 //===============================================================================
 
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
 namespace ZsutPw.Patterns.WindowsApplication.View
 {
   using System;
@@ -27,9 +29,9 @@ namespace ZsutPw.Patterns.WindowsApplication.View
   {
     public object Convert( object value, Type targetType, object parameter, string language )
     {
-      NodeData nodeData = (NodeData)value;
+      MatchDto nodeData = (MatchDto)value;
 
-      return String.Format( "{0} at ({1},{2})", nodeData.Id, nodeData.Position.X, nodeData.Position.Y );
+      return $"{nodeData.Doctor.Name} - {nodeData.ExaminationRoom.Number}";
     }
 
     public object ConvertBack( object value, Type targetType, object parameter, string language )

@@ -11,6 +11,8 @@
 //
 //===============================================================================
 
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
 namespace ZsutPw.Patterns.WindowsApplication.Model
 {
   using System;
@@ -32,11 +34,11 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
       this.serviceClient = new ServiceClient( serviceHost, servicePort );
     }
 
-    public NodeData[ ] GetNodes( string searchText )
+    public MatchDto[ ] GetNodes( string searchText )
     {
-      string callUri = String.Format( "Network/GetNodes?searchText={0}", searchText );
+      string callUri = String.Format("/examination-rooms-selection", searchText );
 
-      NodeData[ ] nodes = this.serviceClient.CallWebService<NodeData[ ]>( HttpMethod.Get, callUri );
+      MatchDto[ ] nodes = this.serviceClient.CallWebService<MatchDto[]>(HttpMethod.Get, callUri);
 
       return nodes;
     }

@@ -10,13 +10,14 @@
     xmlns:model="using:ZsutPw.Patterns.WindowsApplication.Model"
     xmlns:view="using:ZsutPw.Patterns.WindowsApplication.View"
     xmlns:controller="using:ZsutPw.Patterns.WindowsApplication.Controller"
+    xmlns:dtos="using:ExaminationRoomsSelector.Web.Application.Dtos"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
         <controller:ApplicationStateConverter x:Key="ApplicationStateConverter" />
         <view:NodeDataConverter x:Key="NodeDataConverter" />
 
-        <DataTemplate x:Key="NodeListViewTemplate" x:DataType="model:NodeData">
+        <DataTemplate x:Key="NodeListViewTemplate" x:DataType="dtos:MatchDto">
             <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource NodeDataConverter}}" />
         </DataTemplate>
     </Page.Resources>

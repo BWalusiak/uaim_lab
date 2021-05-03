@@ -11,6 +11,8 @@
 //
 //===============================================================================
 
+using ExaminationRoomsSelector.Web.Application.Dtos;
+
 namespace ZsutPw.Patterns.WindowsApplication.Model
 {
   using System;
@@ -35,7 +37,7 @@ namespace ZsutPw.Patterns.WindowsApplication.Model
 
       try
       {
-        NodeData[ ] nodes = networkClient.GetNodes( this.SearchText );
+          MatchDto[ ] nodes = networkClient.GetNodes( this.SearchText );
 
         this.NodeList = nodes.ToList( );
       }
