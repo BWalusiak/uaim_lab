@@ -10,6 +10,7 @@ variables:
   PA_SOURCE_CODE_PATH: 'Projekt/PatientsApp'
   DA_SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
   PD_SOURCE_CODE_PATH: 'Projekt/PatientsData'
+  DOCKER_HOST: "tcp://localhost:2375"
 
 workflow:
   rules:
@@ -60,12 +61,13 @@ build_dd:
 
 docker_dd:
   stage: publish
-  image: docker
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
   script:
-    - docker build --pull -t "$DD_IMAGE"
-    - docker push "$DD_IMAGE"
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $DD_SOURCE_CODE_PATH --dockerfile $DD_SOURCE_CODE_PATH/Dockerfile --destination $DD_IMAGE:latest
   only:
     - master
 
@@ -92,12 +94,13 @@ build_pa:
 
 docker_pa:
   stage: publish
-  image: docker
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
   script:
-    - docker build --pull -t "$PA_IMAGE"
-    - docker push "$PA_IMAGE"
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $PA_SOURCE_CODE_PATH --dockerfile $PA_SOURCE_CODE_PATH/Dockerfile --destination $PA_IMAGE:latest
   only:
     - master
 
