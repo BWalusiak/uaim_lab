@@ -1,7 +1,8 @@
 version: "3.9"
 services:
   roomselector:
-    image: roundel/uaim_lab_rooms-app
+    build:
+      context: ./ExaminationRoomsSelector/App
     ports:
       - "8080:80"
     environment:
@@ -9,7 +10,10 @@ services:
       EXM_ROOM_SEL_ServiceConfiguration__RoomsUrl: "http://rooms"
 
   rooms:
-    image: roundel/uaim_lab_rooms-data
+    build:
+      context: ./ExaminationRooms
 
   doctors:
-    image: roundel/uaim_lab_doctors-data
+    build:
+      context: ./DoctorsApp/Doctors
+
