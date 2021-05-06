@@ -96,24 +96,31 @@ namespace PatientsApp.Web.Application.DataServiceClients
             return patientDto?.UnMap();
         }
 
-        public void AddPatient(Patient patient)
+        public async void AddPatient(Patient patient)
         {
-            var jsonString = JsonSerializer.Serialize(patient);
+            var jsonString = JsonSerializer.Serialize(patient.Map());
             var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
             var client = _clientFactory.CreateClient();
-            var url = $"{_serviceConfiguration.PatientsDataUrl}/add-patient";
-            client.PostAsync(url, content);
+            var url = $"{_serviceConfiguration.PatientsDataUrl}/patient";
+            await client.PostAsync(url, content);
         }
-    }
 
-    public interface IPatientsDataServiceClient
-    {
-        public Task<IEnumerable<Patient>> GetAllPatientsAsync();
-        public Task<IEnumerable<Patient>> GetAllByConditionId(int type);
+        public async void DeletePatient(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Delete,
+                $"{_serviceConfiguration.PatientsDataUrl}/patient-id?id=" + id);
 
-        public Task<Patient> GetPatientById(int id);
-        public Task<Patient> GetPatientByPesel(string pesel);
+            var client = _clientFactory.CreateClient();
+            await client.SendAsync(request);
+        }
 
-        public void AddPatient(Patient patient);
+        public async void DeletePatient(string pesel)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Delete,
+                $"{_serviceConfiguration.PatientsDataUrl}/patient-pesel?pesel=" + pesel);
+
+            var client = _clientFactory.CreateClient();
+            await client.SendAsync(request);
+        }
     }
 }

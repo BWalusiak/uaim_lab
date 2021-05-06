@@ -76,5 +76,14 @@ namespace DoctorsData.Infrastructure.Repositories
                 SaveDatabase();
             }
         }
+
+        public void DeleteDoctor(int id)
+        {
+            lock (Lock)
+            {
+                Database.Doctors.Remove(Database.Doctors.Find(doctor => doctor.Id == id));
+                SaveDatabase();
+            }
+        }
     }
 }

@@ -59,5 +59,17 @@ namespace PatientsApp.Web.Controllers
         {
             _patientsQueryHandler.AddPatient(patientDto.UnMap());
         }
+
+        [HttpDelete("patient")]
+        public void DeletePatient(int id)
+        {
+            _patientsQueryHandler.DeletePatient(id);
+        }
+
+        [HttpDelete("patient")]
+        public void DeletePatient(string pesel)
+        {
+            _patientsQueryHandler.DeletePatient(pesel);
+        }
     }
 }

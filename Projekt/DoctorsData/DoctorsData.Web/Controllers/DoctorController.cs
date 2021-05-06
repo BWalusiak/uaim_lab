@@ -42,10 +42,16 @@
             return _doctorQueriesHandler.GetByPesel(pesel);
         }
 
-        [HttpPost("add-doctor")]
+        [HttpPost("doctor")]
         public void AddDoctor(DoctorDto doctorDto)
         {
             _doctorQueriesHandler.AddDoctor(doctorDto);
+        }
+
+        [HttpDelete("doctor")]
+        public void DeleteDoctor(int id)
+        {
+            _doctorQueriesHandler.DeleteDoctor(id);
         }
     }
 }

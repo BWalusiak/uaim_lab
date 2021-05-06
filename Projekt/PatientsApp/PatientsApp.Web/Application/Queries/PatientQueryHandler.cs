@@ -5,7 +5,6 @@ namespace PatientsApp.Web.Application.Queries
     using System.Threading.Tasks;
     using BusinessLogic.Matchers;
     using DataServiceClients;
-    using DoctorsData.Infrastructure.Models;
     using Infrastrucutre.Models;
     using PatientsData.Infrastructure.Models;
 
@@ -24,6 +23,16 @@ namespace PatientsApp.Web.Application.Queries
         public void AddPatient(Patient patient)
         {
             _patientsDataServiceClient.AddPatient(patient);
+        }
+
+        public void DeletePatient(int id)
+        {
+            _patientsDataServiceClient.DeletePatient(id);
+        }
+
+        public void DeletePatient(string pesel)
+        {
+            _patientsDataServiceClient.DeletePatient(pesel);
         }
 
         public Task<IEnumerable<Patient>> GetAllPatientsAsync()
@@ -55,15 +64,4 @@ namespace PatientsApp.Web.Application.Queries
         }
     }
 
-    public interface IPatientsQueryHandler
-    {
-        void AddPatient(Patient patient);
-
-        Task<IEnumerable<Patient>> GetAllPatientsAsync();
-        Task<IEnumerable<Patient>> GetAllPatientsByConditionIdAsync(int type);
-        Task<Patient> GetByIdAsync(int id);
-        Task<Patient> GetByPeselAsync(string pesel);
-
-        Doctor GetBestDoctorByPatientId(int id);
-    }
 }

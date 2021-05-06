@@ -7,9 +7,10 @@ namespace DoctorsData.Infrastructure.Repositories
     {
         IEnumerable<Doctor> GetByType(int type);
         IEnumerable<Doctor> GetAll();
-        Doctor GetById(int Id);
-        Doctor GetByPesel(string Pesel);
+        Doctor GetById(int id);
+        Doctor GetByPesel(string pesel);
 
         void AddDoctor(Doctor doctor);
+        void DeleteDoctor(int id);
     }
 }

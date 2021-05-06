@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  doctors-data:
+    image: roundel/uaim_project_doctors-data
+
+  patients-data:
+    image: dadurex/uaim_project_patients_data
+
+  doctors-app:
+    image: dadurex/uaim_project_doctors_app
+    ports:
+      - "42069:80"
+    environment:
+      DOC_APP_ServiceConfiguration__DoctorsDataUrl: "http://doctors-data"
+      DOC_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"
+
+  patients-app:
+    image: roundel/uaim_project_patients-app
+    ports:
+      - "42070:80"
+    environment:
+      PAT_APP_ServiceConfiguration__DoctorsDataUrl: "http://doctors-data"
+      PAT_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"

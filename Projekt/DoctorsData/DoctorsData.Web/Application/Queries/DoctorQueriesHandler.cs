@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Domain.Models;
     using Dtos;
     using Infrastructure.Repositories;
     using Mapper;
@@ -40,6 +39,11 @@
         {
             var doctor = doctorDto.UnMap();
             _doctorRepository.AddDoctor(doctor);
+        }
+
+        public void DeleteDoctor(int id)
+        {
+            _doctorRepository.DeleteDoctor(id);
         }
     }
 }
