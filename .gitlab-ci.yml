@@ -10,7 +10,6 @@ variables:
   PA_SOURCE_CODE_PATH: 'Projekt/PatientsApp'
   DA_SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
   PD_SOURCE_CODE_PATH: 'Projekt/PatientsData'
-  DOCKER_HOST: "tcp://localhost:2375"
 
 workflow:
   rules:
