@@ -18,18 +18,11 @@ namespace PatientsApp.Web.Controllers
             _patientsQueryHandler = patientsQueryHandler;
         }
 
-        [HttpGet("patients")]
-        public async Task<IEnumerable<PatientDto>> GetAllPatients()
+        [HttpGet("doctors")]
+        public async Task<IEnumerable<DoctorDto>> GetAllDoctors()
         {
-            var patients = await _patientsQueryHandler.GetAllPatientsAsync();
-            return patients.Select(patient => patient.Map());
-        }
-
-        [HttpGet("patient/condition/{type:int}")]
-        public async Task<IEnumerable<PatientDto>> GetAllPatientsByCondition(int type)
-        {
-            var patientsByCondition = await _patientsQueryHandler.GetAllPatientsByConditionIdAsync(type);
-            return patientsByCondition?.Select(patient => patient.Map());
+            var doctors = await _patientsQueryHandler.GetAllDoctorsAsync();
+            return doctors.Select(doctor => doctor.Map());
         }
 
         [HttpGet("patient/{id:int}")]

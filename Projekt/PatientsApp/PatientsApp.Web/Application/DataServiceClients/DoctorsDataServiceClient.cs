@@ -9,6 +9,7 @@ namespace PatientsApp.Web.Application.DataServiceClients
     using Dtos;
     using Infrastrucutre.Models;
     using Mapper;
+    using PatientsData.Infrastructure.Models;
 
     public class DoctorsDataServiceClient : IDoctorsDataServiceClient
     {
@@ -25,6 +26,25 @@ namespace PatientsApp.Web.Application.DataServiceClients
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
                 $"{_serviceConfiguration.DoctorsDataUrl}/select-specialization?type=" + type);
+            request.Headers.Add("Accept", "application/json");
+
+            var client = _clientFactory.CreateClient();
+            var response = await client.SendAsync(request);
+
+            await using var responseStream = await response.Content.ReadAsStreamAsync();
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var doctorDtos = await JsonSerializer.DeserializeAsync<IEnumerable<DoctorDto>>(responseStream, options);
+
+            return doctorDtos?.Select(dto => dto.UnMap());
+        }
+
+        public async Task<IEnumerable<Doctor>> GetAllDoctors()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get,
+                $"{_serviceConfiguration.DoctorsDataUrl}/doctors");
             request.Headers.Add("Accept", "application/json");
 
             var client = _clientFactory.CreateClient();

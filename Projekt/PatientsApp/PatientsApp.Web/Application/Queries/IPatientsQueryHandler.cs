@@ -11,7 +11,7 @@ namespace PatientsApp.Web.Application.Queries
         void DeletePatient(int id);
         void DeletePatient(string pesel);
 
-        Task<IEnumerable<Patient>> GetAllPatientsAsync();
+        Task<IEnumerable<Doctor>> GetAllDoctorsAsync();
         Task<IEnumerable<Patient>> GetAllPatientsByConditionIdAsync(int type);
         Task<Patient> GetByIdAsync(int id);
         Task<Patient> GetByPeselAsync(string pesel);

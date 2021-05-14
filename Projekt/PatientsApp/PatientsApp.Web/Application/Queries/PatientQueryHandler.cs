@@ -35,9 +35,9 @@ namespace PatientsApp.Web.Application.Queries
             _patientsDataServiceClient.DeletePatient(pesel);
         }
 
-        public Task<IEnumerable<Patient>> GetAllPatientsAsync()
+        public Task<IEnumerable<Doctor>> GetAllDoctorsAsync()
         {
-            return _patientsDataServiceClient.GetAllPatientsAsync();
+            return _doctorsDataServiceClient.GetAllDoctors();
         }
 
         public Task<IEnumerable<Patient>> GetAllPatientsByConditionIdAsync(int type)
