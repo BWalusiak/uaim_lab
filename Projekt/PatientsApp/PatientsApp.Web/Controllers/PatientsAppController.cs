@@ -53,13 +53,13 @@ namespace PatientsApp.Web.Controllers
             _patientsQueryHandler.AddPatient(patientDto.UnMap());
         }
 
-        [HttpDelete("patient")]
+        [HttpDelete("patient/{id:int}")]
         public void DeletePatient(int id)
         {
             _patientsQueryHandler.DeletePatient(id);
         }
 
-        [HttpDelete("patient")]
+        [HttpDelete("patient/pesel/{id:int}")]
         public void DeletePatient(string pesel)
         {
             _patientsQueryHandler.DeletePatient(pesel);
