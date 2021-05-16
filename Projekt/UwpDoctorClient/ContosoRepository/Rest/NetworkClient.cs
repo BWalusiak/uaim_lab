@@ -43,7 +43,7 @@ namespace Contoso.Repository.Rest
 
         public void DeleteDoctor(int id)
         { 
-            _http.DeleteAsyncNoGuid($"doctor/{id}/can-treat");
+            _http.DeleteAsyncNoGuid($"doctor/{id}");
         }
 
         // Patient Queries
