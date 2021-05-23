@@ -43,23 +43,6 @@ lint:dd:
     - 'cd $DD_SOURCE_CODE_PATH'
     - 'dotnet tool restore'
     - 'dotnet dotnet-format --check'
-  only:
-    changes:
-      - "$DD_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
-
-test:dd:
-  stage: test
-  script:
-    - 'cd $DD_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet test --no-restore'
-  only:
-    changes:
-      - "$DD_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
-  dependencies:
-    - build:dd
 
 build:dd:
   stage: build
@@ -67,10 +50,24 @@ build:dd:
     - 'cd $DD_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet build --no-restore'
-  only:
-    changes:
-      - "$DD_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
+  needs:
+    - job: lint:dd
+
+test:dd:
+  stage: test
+  script:
+    - 'cd $DD_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+  artifacts:
+    when: always
+    paths:
+      - '$DD_SOURCE_CODE_PATH/**/*test-result.xml'
+    reports:
+      junit:
+        - '$DD_SOURCE_CODE_PATH/**/*test-result.xml'
+  needs:
+    - job: build:dd
 
 publish:dd:
   stage: publish
@@ -84,11 +81,8 @@ publish:dd:
   only:
     refs:
     - master
-    changes:
-      - "$DD_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
-  dependencies:
-    - build:dd
+  needs:
+    - job: test:dd
 
 lint:pa:
   stage: lint
@@ -96,23 +90,6 @@ lint:pa:
     - 'cd $PA_SOURCE_CODE_PATH'
     - 'dotnet tool restore'
     - 'dotnet dotnet-format --check'
-  only:
-    changes:
-      - "$PA_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
-
-test:pa:
-  stage: test
-  script:
-    - 'cd $PA_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet test --no-restore'
-  only:
-    changes:
-      - "$PA_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
-  dependencies:
-    - build:pa
 
 build:pa:
   stage: build
@@ -120,10 +97,24 @@ build:pa:
     - 'cd $PA_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet build --no-restore'
-  only:
-    changes:
-      - "$PA_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
+  needs:
+    - job: lint:pa
+
+test:pa:
+  stage: test
+  script:
+    - 'cd $PA_SOURCE_CODE_PATH'
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+  artifacts:
+    when: always
+    paths:
+      - '$PA_SOURCE_CODE_PATH/**/*test-result.xml'
+    reports:
+      junit:
+        - '$PA_SOURCE_CODE_PATH/**/*test-result.xml'
+  needs:
+    - job: build:pa
 
 publish:pa:
   stage: publish
@@ -137,8 +128,5 @@ publish:pa:
   only:
     refs: 
       - master
-    changes:
-      - "$PA_SOURCE_CODE_PATH/**/*"
-      - ".gitlab-ci.yaml"
-  dependencies:
-    - build:pa
+  needs:
+    - job: test:pa
