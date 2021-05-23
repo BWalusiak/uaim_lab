@@ -19,8 +19,8 @@ workflow:
 
 stages:
   - lint
-  - test
   - build
+  - test
   - publish
 
 cache:
@@ -37,28 +37,42 @@ cache:
     - '$NUGET_PACKAGES_DIRECTORY'
   policy: pull-push
 
-lint_dd:
+lint:dd:
   stage: lint
   script:
     - 'cd $DD_SOURCE_CODE_PATH'
     - 'dotnet tool restore'
     - 'dotnet dotnet-format --check'
+  only:
+    changes:
+      - "$DD_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
 
-tests_dd:
+test:dd:
   stage: test
   script:
     - 'cd $DD_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet test --no-restore'
+  only:
+    changes:
+      - "$DD_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
+  dependencies:
+    - build:dd
 
-build_dd:
+build:dd:
   stage: build
   script:
     - 'cd $DD_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet build --no-restore'
+  only:
+    changes:
+      - "$DD_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
 
-docker_dd:
+publish:dd:
   stage: publish
   image:
     name: gcr.io/kaniko-project/executor:debug
@@ -68,30 +82,50 @@ docker_dd:
     - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context $DD_SOURCE_CODE_PATH --dockerfile $DD_SOURCE_CODE_PATH/Dockerfile --destination $DD_IMAGE:latest
   only:
+    refs:
     - master
+    changes:
+      - "$DD_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
+  dependencies:
+    - build:dd
 
-lint_pa:
+lint:pa:
   stage: lint
   script:
     - 'cd $PA_SOURCE_CODE_PATH'
     - 'dotnet tool restore'
     - 'dotnet dotnet-format --check'
+  only:
+    changes:
+      - "$PA_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
 
-tests_pa:
+test:pa:
   stage: test
   script:
     - 'cd $PA_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet test --no-restore'
+  only:
+    changes:
+      - "$PA_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
+  dependencies:
+    - build:pa
 
-build_pa:
+build:pa:
   stage: build
   script:
     - 'cd $PA_SOURCE_CODE_PATH'
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet build --no-restore'
+  only:
+    changes:
+      - "$PA_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
 
-docker_pa:
+publish:pa:
   stage: publish
   image:
     name: gcr.io/kaniko-project/executor:debug
@@ -101,46 +135,10 @@ docker_pa:
     - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context $PA_SOURCE_CODE_PATH --dockerfile $PA_SOURCE_CODE_PATH/Dockerfile --destination $PA_IMAGE:latest
   only:
-    - master
-
-lint_da:
-  stage: lint
-  script:
-    - 'cd $DA_SOURCE_CODE_PATH'
-    - 'dotnet tool restore'
-    - 'dotnet dotnet-format --check'
-
-tests_da:
-  stage: test
-  script:
-    - 'cd $DA_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet test --no-restore'
-
-build_da:
-  stage: build
-  script:
-    - 'cd $DA_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet build --no-restore'
-
-lint_pd:
-  stage: lint
-  script:
-    - 'cd $PD_SOURCE_CODE_PATH'
-    - 'dotnet tool restore'
-    - 'dotnet dotnet-format --check'
-
-tests_pd:
-  stage: test
-  script:
-    - 'cd $PD_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet test --no-restore'
-
-build_pd:
-  stage: build
-  script:
-    - 'cd $PD_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet build --no-restore'
+    refs: 
+      - master
+    changes:
+      - "$PA_SOURCE_CODE_PATH/**/*"
+      - ".gitlab-ci.yaml"
+  dependencies:
+    - build:pa
