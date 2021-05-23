@@ -2,6 +2,7 @@ namespace PatientsData.Infrastructure.Models
 {
     using System.Collections.Generic;
     using System.Xml.Serialization;
+    using PatientsApp.Infrastrucutre.Models;
 
     public class Patient
     {
@@ -10,7 +11,7 @@ namespace PatientsData.Infrastructure.Models
             Id = id;
             Name = name;
             Sex = sex;
-            PESEL = pesel;
+            Pesel = pesel;
             Conditions = conditions;
         }
 
@@ -24,7 +25,7 @@ namespace PatientsData.Infrastructure.Models
 
         public Sex Sex { get; set; }
 
-        public string PESEL { get; set; }
+        public string Pesel { get; set; }
 
         public List<Condition> Conditions { get; set; }
     }

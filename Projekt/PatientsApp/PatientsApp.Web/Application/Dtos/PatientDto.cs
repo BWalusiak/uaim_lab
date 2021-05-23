@@ -10,7 +10,7 @@ namespace PatientsApp.Web.Application.Dtos
 
         public string Sex { get; set; }
 
-        public string PESEL { get; set; }
+        public string Pesel { get; set; }
 
         public IEnumerable<ConditionDto> Conditions { get; set; }
 

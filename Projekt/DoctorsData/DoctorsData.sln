@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorsData.Infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorsData.Domain", "DoctorsData.Domain\DoctorsData.Domain.csproj", "{60AB919B-C08C-4EF6-977C-F9356BD08702}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorsData.Test", "DoctorsData.Test\DoctorsData.Test.csproj", "{3CF96125-47BF-40FE-A0F4-C7849B359C88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{60AB919B-C08C-4EF6-977C-F9356BD08702}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60AB919B-C08C-4EF6-977C-F9356BD08702}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60AB919B-C08C-4EF6-977C-F9356BD08702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF96125-47BF-40FE-A0F4-C7849B359C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF96125-47BF-40FE-A0F4-C7849B359C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF96125-47BF-40FE-A0F4-C7849B359C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF96125-47BF-40FE-A0F4-C7849B359C88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

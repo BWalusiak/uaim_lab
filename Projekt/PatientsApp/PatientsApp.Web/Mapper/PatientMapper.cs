@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using Application.Dtos;
+    using Infrastrucutre.Models;
     using PatientsData.Infrastructure.Models;
 
     public static class PatientsMapper
@@ -17,7 +18,7 @@
                 Id = patient.Id,
                 Name = patient.Name,
                 Sex = patient.Sex.ToString(),
-                PESEL = patient.PESEL,
+                Pesel = patient.Pesel,
                 Conditions = patient?.Conditions.Select(c => new ConditionDto
                 { Type = c.Type, DiagnosisDate = c.DiagnosisDate.Date }).ToList()
             };
@@ -33,7 +34,7 @@
                 Id = patientDto.Id,
                 Name = patientDto.Name,
                 Sex = Enum.Parse<Sex>(patientDto.Sex),
-                PESEL = patientDto.PESEL,
+                Pesel = patientDto.Pesel,
                 Conditions = patientDto?.Conditions.Select(c => new Condition
                 { Type = c.Type, DiagnosisDate = c.DiagnosisDate }).ToList()
             };
