@@ -1,0 +1,75 @@
+image: mcr.microsoft.com/dotnet/sdk:5.0
+
+variables:
+  # 1) Name of directory where restore and build objects are stored.
+  OBJECTS_DIRECTORY: 'obj'
+  # 2) Name of directory used for keeping restored dependencies.
+  NUGET_PACKAGES_DIRECTORY: '.nuget'
+
+default:
+  before_script:
+    - cd Projekt/DoctorsData
+
+workflow:
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:
+  - lint
+  - build
+  - test
+  - publish
+
+cache:
+  key: "$CI_JOB_STAGE-$CI_COMMIT_REF_SLUG"
+  paths:
+    - 'project.assets.json'
+    - '*.csproj.nuget.*'
+    - '$NUGET_PACKAGES_DIRECTORY'
+  policy: pull-push
+
+lint:dd:
+  stage: lint
+  script:
+    - 'dotnet tool restore'
+    - 'dotnet dotnet-format --check'
+
+build:dd:
+  stage: build
+  script:
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet build --no-restore'
+  needs:
+    - job: lint:dd
+
+test:dd:
+  stage: test
+  script:
+    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
+    - 'dotnet test --no-restore --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+  artifacts:
+    when: always
+    paths:
+      - 'Projekt/DoctorsData/**/*test-result.xml'
+    reports:
+      junit:
+        - 'Projekt/DoctorsData/**/*test-result.xml'
+  needs:
+    - job: build:dd
+
+publish:dd:
+  stage: publish
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --cache=true --cache-repo="${DD_IMAGE}-cache" --context . --dockerfile Dockerfile --destination $DD_IMAGE:latest
+  only:
+    refs:
+    - master
+  needs:
+    - job: test:dd

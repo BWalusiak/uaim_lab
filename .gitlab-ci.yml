@@ -1,132 +1,27 @@
-image: mcr.microsoft.com/dotnet/sdk:5.0
+stages:
+  - triggers
 
-variables:
-  # 1) Name of directory where restore and build objects are stored.
-  OBJECTS_DIRECTORY: 'obj'
-  # 2) Name of directory used for keeping restored dependencies.
-  NUGET_PACKAGES_DIRECTORY: '.nuget'
-  # 3) A relative path to the source code from project repository root.
-  DD_SOURCE_CODE_PATH: 'Projekt/DoctorsData'
-  PA_SOURCE_CODE_PATH: 'Projekt/PatientsApp'
-  DA_SOURCE_CODE_PATH: 'Projekt/DoctorsApp'
-  PD_SOURCE_CODE_PATH: 'Projekt/PatientsData'
-
+  
 workflow:
   rules:
     - if: $CI_MERGE_REQUEST_IID
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-stages:
-  - lint
-  - build
-  - test
-  - publish
+trigger_dd:
+  stage: triggers
+  trigger:
+    include: Projekt/DoctorsData/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Projekt/DoctorsData/**/*
 
-cache:
-  key: "$CI_JOB_STAGE-$CI_COMMIT_REF_SLUG"
-  paths:
-    - '$DD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
-    - '$DD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
-    - '$DA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
-    - '$DA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
-    - '$PD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
-    - '$PD_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/project.assets.json'
-    - '$PA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
-    - '$PA_SOURCE_CODE_PATH$OBJECTS_DIRECTORY/*.csproj.nuget.*'
-    - '$NUGET_PACKAGES_DIRECTORY'
-  policy: pull-push
-
-lint:dd:
-  stage: lint
-  script:
-    - 'cd $DD_SOURCE_CODE_PATH'
-    - 'dotnet tool restore'
-    - 'dotnet dotnet-format --check'
-
-build:dd:
-  stage: build
-  script:
-    - 'cd $DD_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet build --no-restore'
-  needs:
-    - job: lint:dd
-
-test:dd:
-  stage: test
-  script:
-    - 'cd $DD_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet test --no-restore --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
-  artifacts:
-    when: always
-    paths:
-      - '$DD_SOURCE_CODE_PATH/**/*test-result.xml'
-    reports:
-      junit:
-        - '$DD_SOURCE_CODE_PATH/**/*test-result.xml'
-  needs:
-    - job: build:dd
-
-publish:dd:
-  stage: publish
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --cache=true --cache-repo="${DD_IMAGE}-cache" --context $DD_SOURCE_CODE_PATH --dockerfile $DD_SOURCE_CODE_PATH/Dockerfile --destination $DD_IMAGE:latest
-  only:
-    refs:
-    - master
-  needs:
-    - job: test:dd
-
-lint:pa:
-  stage: lint
-  script:
-    - 'cd $PA_SOURCE_CODE_PATH'
-    - 'dotnet tool restore'
-    - 'dotnet dotnet-format --check'
-
-build:pa:
-  stage: build
-  script:
-    - 'cd $PA_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet build --no-restore'
-  needs:
-    - job: lint:pa
-
-test:pa:
-  stage: test
-  script:
-    - 'cd $PA_SOURCE_CODE_PATH'
-    - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
-    - 'dotnet test --no-restore --test-adapter-path:. --logger:"junit;LogFilePath=..\artifacts\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
-  artifacts:
-    when: always
-    paths:
-      - '$PA_SOURCE_CODE_PATH/**/*test-result.xml'
-    reports:
-      junit:
-        - '$PA_SOURCE_CODE_PATH/**/*test-result.xml'
-  needs:
-    - job: build:pa
-
-publish:pa:
-  stage: publish
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  script:
-    - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --cache=true --cache-repo="${PA_IMAGE}-cache" --context $PA_SOURCE_CODE_PATH --dockerfile $PA_SOURCE_CODE_PATH/Dockerfile --destination $PA_IMAGE:latest
-  only:
-    refs: 
-      - master
-  needs:
-    - job: test:pa
+trigger_pa:
+  stage: triggers
+  trigger:
+    include: Projekt/PatientsApp/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Projekt/PatientsApp/**/*
