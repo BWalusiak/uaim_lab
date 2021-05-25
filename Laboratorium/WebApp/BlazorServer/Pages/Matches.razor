@@ -1,0 +1,45 @@
+﻿@page "/matches"
+@using Controller
+@using Model
+@using Model.Data
+@using Syncfusion.Blazor.Navigations
+@inject IController Controller
+@inject IModel Model
+
+<RadzenButton Icon="refresh" Text="Refresh" Click="@Controller.SearchMatchesAsync" Style="width: 160px"/>
+
+<h5 style="margin-top: 16px">Matches</h5>
+
+<RadzenListBox Name="matchList" Data="@Model.MatchList" TValue="MatchData" SelectedItem="@Model.SelectedMatch" Style="width: 324px; height: 240px">
+    <Template Context="matchData">
+        @matchData.Doctor.FirstName @matchData.Doctor.LastName in room @matchData.Room.Number
+    </Template>
+</RadzenListBox>
+
+<RadzenMenu>
+    <RadzenButton Text="Add" Icon="add" Size="ButtonSize.Small" Click="@ToTrue"></RadzenButton>
+</RadzenMenu>
+
+<div style="margin-top: 12px; width: 324px; text-align: center">
+    <RadzenLink Text=".Net docs" Path="https://docs.microsoft.com/en-us/dotnet/csharp/" Target="_blank"/>
+</div>
+
+<SfDialog Width="230px" @bind-Visible="@IsVisible">
+    <DialogButtons >
+        <RadzenButton Text="Not implemented" Click="@ToFalse" Style="align-content: center"></RadzenButton>
+    </DialogButtons>
+</SfDialog>
+
+@code{
+    private bool IsVisible { get; set; }
+
+    private void ToTrue()
+    {
+        IsVisible = true;
+    }
+
+    private void ToFalse()
+    {
+        IsVisible = false;
+    }
+}
