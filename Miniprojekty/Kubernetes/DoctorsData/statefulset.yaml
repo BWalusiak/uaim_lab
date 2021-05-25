@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: doctors-data
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      app: doctors-data
+  serviceName: doctors-data
+  template:
+    metadata:
+      name: doctors-data
+      labels:
+        app: doctors-data
+    spec:
+      containers:
+        - name: app
+          image: roundel/uaim_project_doctors-data
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+          volumeMounts:
+            - mountPath: /app/Resources/
+              name: database
+      volumes:
+        - name: database
+          persistentVolumeClaim:
+            claimName: doctors-data-pvc
+      nodeSelector:
+        kubernetes.io/arch: amd64
+          
