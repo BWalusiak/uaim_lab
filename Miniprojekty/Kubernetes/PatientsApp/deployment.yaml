@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patients-app
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      app: patients-app
+  template:
+    metadata:
+      name: patients-app
+      labels:
+        app: patients-app
+    spec:
+      containers:
+        - name: app
+          image: roundel/uaim_project_patients-app
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: PAT_APP_ServiceConfiguration__DoctorsDataUrl
+              value: "http://doctors-data"
+            - name: PAT_APP_ServiceConfiguration__PatientsDataUrl
+              value: "http://patients-data"

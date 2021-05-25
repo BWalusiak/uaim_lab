@@ -1,9 +1,5 @@
-image: mcr.microsoft.com/dotnet/sdk:5.0
-
 variables:
-  # 1) Name of directory where restore and build objects are stored.
   OBJECTS_DIRECTORY: 'obj'
-  # 2) Name of directory used for keeping restored dependencies.
   NUGET_PACKAGES_DIRECTORY: '.nuget'
 
 default:
@@ -21,6 +17,7 @@ stages:
   - build
   - test
   - publish
+  - deploy
 
 cache:
   key: "$CI_JOB_STAGE-$CI_COMMIT_REF_SLUG"
@@ -31,12 +28,14 @@ cache:
   policy: pull-push
 
 lint:pa:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: lint
   script:
     - 'dotnet tool restore'
     - 'dotnet dotnet-format --check'
 
 build:pa:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: build
   script:
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
@@ -45,6 +44,7 @@ build:pa:
     - job: lint:pa
 
 test:pa:
+  image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: test
   script:
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
@@ -73,3 +73,18 @@ publish:pa:
       - master
   needs:
     - job: test:pa
+
+deploy:pa:
+  stage: deploy
+  image: bitnami/kubectl
+  before_script:
+    - export KUBECONFIG=$(mktemp)
+    - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
+  script:
+    - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsApp"
+    - kubectl rollout restart deployment patients-app
+  only:
+    refs:
+    - master
+  needs:
+    - job: publish:pa
