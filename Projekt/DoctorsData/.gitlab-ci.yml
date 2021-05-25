@@ -1,7 +1,6 @@
 variables:
   OBJECTS_DIRECTORY: 'obj'
   NUGET_PACKAGES_DIRECTORY: '.nuget'
-  KUBECONFIG: /etc/deploy/config
 
 default:
   before_script:
@@ -79,11 +78,11 @@ deploy:dd:
   stage: deploy
   image: bitnami/kubectl
   before_script:
-    - mkdir -p /etc/deploy
+    - export KUBECONFIG=$(mktemp)
     - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f ${CI_PROJECT_PATH}/Miniprojekty/Kubernetes/DoctorsData
-    - kubectl rollout restart deployment doctors-data
+    - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/DoctorsData"
+    - kubectl rollout restart statefulset doctors-data
   only:
     refs:
     - master
