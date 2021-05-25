@@ -16,6 +16,7 @@ trigger_dd:
   rules:
     - changes:
         - Projekt/DoctorsData/**/*
+        - Miniprojekty/Kubernetes/DoctorsData/**/*
 
 trigger_pa:
   stage: triggers
@@ -25,3 +26,4 @@ trigger_pa:
   rules:
     - changes:
         - Projekt/PatientsApp/**/*
+        - Miniprojekty/Kubernetes/PatientsApp/**/*
