@@ -6,13 +6,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      data: lab-rooms
+      app: lab-rooms
   serviceName: lab-rooms
   template:
     metadata:
       name: lab-rooms
       labels:
-        data: lab-rooms
+        app: lab-rooms
     spec:
       containers:
         - name: data

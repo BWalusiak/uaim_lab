@@ -6,13 +6,13 @@ metadata:
 spec:
   selector:
     matchLabels:
-      data: lab-doctors-data
+      app: lab-doctors-data
   serviceName: lab-doctors-data
   template:
     metadata:
       name: lab-doctors-data
       labels:
-        data: lab-doctors-data
+        app: lab-doctors-data
     spec:
       containers:
         - name: data
