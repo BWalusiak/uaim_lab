@@ -46,6 +46,13 @@ namespace PatientsApp.Web.Controllers
             return doctor.Map();
         }
 
+        [HttpGet("patient/{id:int}/best-doctor-sex")]
+        public DoctorDto GetBestDoctorMatchSexByPatientId(int id)
+        {
+            var doctor = _patientsQueryHandler.GetBestDoctorMatchSexByPatientId(id);
+            return doctor.Map();
+        }
+
 
         [HttpPost("patient")]
         public void AddPatient(PatientDto patientDto)

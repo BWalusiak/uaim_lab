@@ -62,6 +62,14 @@ namespace PatientsApp.Web.Application.Queries
             var matcher = new BestDoctorMatcher(patient, doctors);
             return matcher.GetBestDoctor();
         }
+
+        public Doctor GetBestDoctorMatchSexByPatientId(int id)
+        {
+            var patient = _patientsDataServiceClient.GetPatientById(id).Result;
+            var doctors = _doctorsDataServiceClient.GetDoctorsBySpecializationId(patient.Conditions.First().Type).Result;
+            var matcher = new BestDoctorMatcher(patient, doctors);
+            return matcher.GetBestDoctorSex();
+        }
     }
 
 }

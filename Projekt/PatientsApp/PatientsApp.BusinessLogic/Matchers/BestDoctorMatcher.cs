@@ -1,3 +1,5 @@
+using System;
+
 namespace PatientsApp.BusinessLogic.Matchers
 {
     using System.Collections.Generic;
@@ -24,6 +26,29 @@ namespace PatientsApp.BusinessLogic.Matchers
             var bestDoctor = doctorsList.First();
             var maxTreatments = 0;
             foreach (var doctor in doctorsList)
+            {
+                if (maxTreatments >= doctor.Specializations.Count())
+                    break;
+
+                var treatmentCount = _patient.Conditions.Select(dto => dto.Type)
+                    .Intersect(doctor.Specializations.Select(dto => dto.Type)).Count();
+
+                if (treatmentCount <= maxTreatments)
+                    continue;
+                bestDoctor = doctor;
+                maxTreatments = treatmentCount;
+            }
+
+            return bestDoctor;
+        }
+
+        public Doctor GetBestDoctorSex()
+        {
+            var sexDoctorsList = _doctors.Where(doctor => doctor.Sex.Equals(_patient.Sex)).ToList();
+            sexDoctorsList.Sort((d1, d2) => d2.Specializations.Count() - d1.Specializations.Count());
+            var bestDoctor = sexDoctorsList.First();
+            var maxTreatments = 0;
+            foreach (var doctor in sexDoctorsList)
             {
                 if (maxTreatments >= doctor.Specializations.Count())
                     break;

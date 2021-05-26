@@ -17,5 +17,6 @@ namespace PatientsApp.Web.Application.Queries
         Task<Patient> GetByPeselAsync(string pesel);
 
         Doctor GetBestDoctorByPatientId(int id);
+        Doctor GetBestDoctorMatchSexByPatientId(int id);
     }
 }
