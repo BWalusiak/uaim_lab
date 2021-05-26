@@ -2,6 +2,7 @@ variables:
   OBJECTS_DIRECTORY: 'obj'
   NUGET_PACKAGES_DIRECTORY: '.nuget'
   SOURCE_CODE_PATH: 'Projekt/DoctorsData'
+  DOCKER_IMAGE: 'roundel/uaim_project_doctors-data'
 
 default:
   before_script:
@@ -76,7 +77,7 @@ publish:dd:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --cache=true --cache-repo="${DD_IMAGE}-cache" --context . --dockerfile Dockerfile --destination $DD_IMAGE:latest
+    - /kaniko/executor --cache=true --cache-repo="${DOCKER_IMAGE}-cache" --context . --dockerfile Dockerfile --destination $DOCKER_IMAGE:latest
   only:
     refs:
     - master

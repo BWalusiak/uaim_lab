@@ -2,6 +2,7 @@ variables:
   OBJECTS_DIRECTORY: 'obj'
   NUGET_PACKAGES_DIRECTORY: '.nuget'
   SOURCE_CODE_PATH: 'Projekt/PatientsApp'
+  DOCKER_IMAGE: 'roundel/uaim_project_patients-app'
 
 default:
   before_script:
@@ -76,7 +77,7 @@ publish:pa:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --cache=true --cache-repo="${PA_IMAGE}-cache" --context . --dockerfile Dockerfile --destination $PA_IMAGE:latest
+    - /kaniko/executor --cache=true --cache-repo="${DOCKER_IMAGE}-cache" --context . --dockerfile Dockerfile --destination $DOCKER_IMAGE:latest
   only:
     refs: 
       - master
