@@ -18,7 +18,7 @@ namespace ExaminationRoomsSelector.Web.Application.Dtos
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
-            return Equals((DoctorDto) obj);
+            return Equals((DoctorDto)obj);
         }
 
         public override int GetHashCode()

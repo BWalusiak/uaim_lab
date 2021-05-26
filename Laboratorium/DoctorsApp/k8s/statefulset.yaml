@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lab-doctors-data
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      data: lab-doctors-data
+  serviceName: lab-doctors-data
+  template:
+    metadata:
+      name: lab-doctors-data
+      labels:
+        data: lab-doctors-data
+    spec:
+      containers:
+        - name: data
+          image: roundel/uaim_lab_doctors-data
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP

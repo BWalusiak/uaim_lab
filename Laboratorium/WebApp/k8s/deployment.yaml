@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-webapp
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      app: lab-webapp
+  template:
+    metadata:
+      name: lab-webapp
+      labels:
+        app: lab-webapp
+    spec:
+      containers:
+        - name: app
+          image: roundel/uaim_lab_webapp
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: EXM_WEB_ServiceConfiguration__BackendUrl
+              value: "http://lab-selector"

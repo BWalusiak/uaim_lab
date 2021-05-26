@@ -1,7 +1,7 @@
 variables:
   OBJECTS_DIRECTORY: 'obj'
   NUGET_PACKAGES_DIRECTORY: '.nuget'
-  SOURCE_CODE_PATH: 'Projekt/DoctorsData'
+  SOURCE_CODE_PATH: 'Laboratorium/DoctorsApp'
 
 default:
   before_script:
@@ -28,7 +28,7 @@ cache:
     - '$SOURCE_CODE_PATH/$NUGET_PACKAGES_DIRECTORY'
   policy: pull-push
 
-lint:dd:
+lint:lab-dd:
   image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: lint
   tags:
@@ -37,7 +37,7 @@ lint:dd:
     - 'dotnet tool restore'
     - 'dotnet dotnet-format --check'
 
-build:dd:
+build:lab-dd:
   image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: build
   tags:
@@ -46,9 +46,9 @@ build:dd:
     - 'dotnet restore --packages $NUGET_PACKAGES_DIRECTORY'
     - 'dotnet build --no-restore'
   needs:
-    - job: lint:dd
+    - job: lint:lab-dd
 
-test:dd:
+test:lab-dd:
   image: mcr.microsoft.com/dotnet/sdk:5.0
   stage: test
   tags:
@@ -64,9 +64,9 @@ test:dd:
       junit:
         - '$SOURCE_CODE_PATH/**/*test-result.xml'
   needs:
-    - job: build:dd
+    - job: build:lab-dd
 
-publish:dd:
+publish:lab-dd:
   stage: publish
   image:
     name: gcr.io/kaniko-project/executor:debug
@@ -76,14 +76,14 @@ publish:dd:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$REGISTRY_AUTH\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --cache=true --cache-repo="${DD_IMAGE}-cache" --context . --dockerfile Dockerfile --destination $DD_IMAGE:latest
+    - /kaniko/executor --cache=true --cache-repo="${PA_IMAGE}-cache" --context . --dockerfile Dockerfile --destination roundel/uaim_lab_doctors-data:latest
   only:
-    refs:
-    - master
+    refs: 
+      - master
   needs:
-    - job: test:dd
+    - job: test:lab-dd
 
-deploy:dd:
+deploy:lab-dd:
   stage: deploy
   image: bitnami/kubectl
   tags:
@@ -92,10 +92,10 @@ deploy:dd:
     - export KUBECONFIG=$(mktemp)
     - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/DoctorsData"
-    - kubectl rollout restart statefulset doctors-data
+    - kubectl apply -f "/builds/$CI_PROJECT_PATH/$SOURCE_CODE_PATH/k8s"
+    - kubectl rollout restart statefulset lab-doctors-data
   only:
     refs:
     - master
   needs:
-    - job: publish:dd
+    - job: publish:lab-dd

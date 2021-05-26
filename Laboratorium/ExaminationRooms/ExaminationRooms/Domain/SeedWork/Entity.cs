@@ -8,7 +8,7 @@ namespace ExaminationRooms.Domain.SeedWork
 
         public int Id { get; set; }
 
-        public Entity(int id) 
+        public Entity(int id)
         {
             Id = id;
         }

@@ -25,7 +25,7 @@ namespace ExaminationRoomsSelector
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Examination Room Selector", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Examination Room Selector", Version = "v1" });
             });
             services.AddHttpClient();
             services.AddTransient<IExaminationRoomsSelectorHandler, ExaminationRoomsSelectorQueryHandler>();

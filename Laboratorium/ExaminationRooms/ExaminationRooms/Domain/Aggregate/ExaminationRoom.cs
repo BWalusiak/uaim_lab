@@ -12,7 +12,7 @@ namespace ExaminationRooms.Domain.Aggregate
         }
 
         public string Number { get; set; }
-        
+
         public List<Certification> Certifications { get; set; }
 
         public ExaminationRoom(int id, string number) : base(id)

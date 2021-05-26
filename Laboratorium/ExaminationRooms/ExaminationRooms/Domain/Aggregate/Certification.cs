@@ -10,7 +10,7 @@ namespace ExaminationRooms.Domain.Aggregate
         }
 
         public DateTime GrantedAt { get; set; }
-        public int Type {get; set; }
+        public int Type { get; set; }
 
         public Certification(int id, DateTime grantedAt, int type) : base(id)
         {

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-selector
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      app: lab-selector
+  template:
+    metadata:
+      name: lab-selector
+      labels:
+        app: lab-selector
+    spec:
+      containers:
+        - name: app
+          image: roundel/uaim_lab_rooms-app
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: EXM_ROOM_SEL_ServiceConfiguration__DoctorsUrl
+              value: "http://lab-doctors-data"
+            - name: EXM_ROOM_SEL_ServiceConfiguration__RoomsUrl
+              value: "http://lab-rooms"

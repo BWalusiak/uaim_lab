@@ -6,12 +6,12 @@
 
     public interface IData : INotifyPropertyChanged
     {
-        string SearchText { get; set;  }
+        string SearchText { get; set; }
 
-        List<MatchData> MatchByNumberList { get; set;  }
+        List<MatchData> MatchByNumberList { get; set; }
 
-        List<MatchData> MatchList { get; set;  }
+        List<MatchData> MatchList { get; set; }
 
-        MatchData SelectedMatch { get; set;  }
+        MatchData SelectedMatch { get; set; }
     }
 }

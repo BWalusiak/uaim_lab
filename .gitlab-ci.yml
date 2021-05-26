@@ -1,6 +1,5 @@
 stages:
   - triggers
-
   
 workflow:
   rules:
@@ -27,3 +26,39 @@ trigger_pa:
     - changes:
         - Projekt/PatientsApp/**/*
         - Miniprojekty/Kubernetes/PatientsApp/**/*
+
+trigger_lab_dd:
+  stage: triggers
+  trigger:
+    include: Laboratorium/DoctorsApp/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Laboratorium/DoctorsApp/**/*
+
+trigger_lab_rd:
+  stage: triggers
+  trigger:
+    include: Laboratorium/ExaminationRooms/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Laboratorium/ExaminationRooms/**/*
+
+trigger_lab_selector:
+  stage: triggers
+  trigger:
+    include: Laboratorium/ExaminationRoomsSelector/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Laboratorium/ExaminationRoomsSelector/**/*
+
+trigger_lab_webapp:
+  stage: triggers
+  trigger:
+    include: Laboratorium/WebApp/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Laboratorium/WebApp/**/*

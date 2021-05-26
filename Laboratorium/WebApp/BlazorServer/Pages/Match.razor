@@ -15,7 +15,7 @@
 
 <RadzenListBox Name="matchByNumber" Data="@Model.MatchByNumberList" TValue="MatchData" SelectedItem="@Model.SelectedMatch" Style="width: 324px; height: 240px">
     <Template Context="matchData">
-        @matchData.Doctor.FirstName @matchData.Doctor.LastName in room @matchData.Room.Number
+        @matchData.Doctor.Name in room @matchData.ExaminationRoom.Number
     </Template>
 </RadzenListBox>
 

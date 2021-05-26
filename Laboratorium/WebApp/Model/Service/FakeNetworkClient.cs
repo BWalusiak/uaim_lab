@@ -12,16 +12,16 @@
             {
                 Doctor = new DoctorData
                 {
-                    FirstName = "Marcin", LastName = "Dadura", Sex = "male", Specializations = new List<int>
+                    Name = "Boguchwał Hack-Polay", Specializations = new List<int>
                     {
-                        1, 2, 4
+                        1, 2, 4, 0
                     }
                 },
-                Room = new ExaminationRoomData
+                ExaminationRoom = new ExaminationRoomData
                 {
-                    Number = "68b", Certifications = new List<int>
+                    Number = "420b", Certifications = new List<int>
                     {
-                        1, 2, 4
+                        1, 2, 4, 7
                     }
                 }
             },
@@ -29,16 +29,16 @@
             {
                 Doctor = new DoctorData
                 {
-                    FirstName = "Maciej", LastName = "Włodarczyk", Sex = "female", Specializations = new List<int>
+                    Name = "Bartosz Giga Walusiak Programmer", Specializations = new List<int>
                     {
-                        1, 2, 3
+                        1, 2, 3, 5, 6
                     }
                 },
-                Room = new ExaminationRoomData
+                ExaminationRoom = new ExaminationRoomData
                 {
-                    Number = "69b", Certifications = new List<int>
+                    Number = "69c", Certifications = new List<int>
                     {
-                        1, 2, 5
+                        1, 2, 5, 9
                     }
                 }
             }

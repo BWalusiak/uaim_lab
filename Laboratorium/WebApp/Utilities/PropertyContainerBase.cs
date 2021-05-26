@@ -24,9 +24,9 @@
 
             if (handler == null)
                 return;
-            
+
             var args = new PropertyChangedEventArgs(propertyName);
-            
+
             Action action = () => handler(this, args);
 
             dispatcher.Dispatch(action);

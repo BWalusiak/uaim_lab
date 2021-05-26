@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-rooms
+  namespace: uaim
+spec:
+  selector:
+    app: lab-rooms
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80

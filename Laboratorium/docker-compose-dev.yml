@@ -3,8 +3,6 @@ services:
   roomselector:
     build:
       context: ./ExaminationRoomsSelector/App
-    ports:
-      - "8080:80"
     environment:
       EXM_ROOM_SEL_ServiceConfiguration__DoctorsUrl: "http://doctors"
       EXM_ROOM_SEL_ServiceConfiguration__RoomsUrl: "http://rooms"
@@ -17,3 +15,10 @@ services:
     build:
       context: ./DoctorsApp/Doctors
 
+  webapp:
+    build:
+      context: ./WebApp
+    environment:
+      EXM_WEB_ServiceConfiguration__BackendUrl: "http://roomselector"
+    ports:
+      - "8080:80"

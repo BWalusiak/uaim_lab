@@ -2,6 +2,7 @@
 {
     using System.Diagnostics;
     using System.Net.Http;
+    using Configuration;
     using Data;
     using Utilities;
     using static System.String;
@@ -10,11 +11,9 @@
     {
         private readonly ServiceClient _serviceClient;
 
-        public NetworkClient(string serviceHost, int servicePort)
+        public NetworkClient(ServiceConfiguration configuration)
         {
-            Debug.Assert(condition: !IsNullOrEmpty(serviceHost) && servicePort > 0);
-
-            _serviceClient = new ServiceClient(serviceHost, servicePort);
+            _serviceClient = new ServiceClient(configuration.BackendUrl);
         }
 
         public MatchData[] GetMatches()

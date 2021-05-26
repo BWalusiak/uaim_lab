@@ -8,10 +8,10 @@
     public interface IController : INotifyPropertyChanged
     {
         IModel Model { get; }
-        
+
         Task SearchMatchesAsync();
 
         Task SearchMatchesByNumberAsync();
-        
+
     }
 }

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-doctors-data
+  namespace: uaim
+spec:
+  selector:
+    app: lab-doctors-data
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 80

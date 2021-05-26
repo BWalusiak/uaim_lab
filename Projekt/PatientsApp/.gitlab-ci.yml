@@ -5,7 +5,7 @@ variables:
 
 default:
   before_script:
-    - cd Projekt/PatientsApp
+    - cd $SOURCE_CODE_PATH
 
 workflow:
   rules:

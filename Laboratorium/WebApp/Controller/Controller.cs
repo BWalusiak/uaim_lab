@@ -22,7 +22,7 @@
         {
             await Task.Run(SearchMatchesByNumber);
         }
-        
+
         private void SearchMatches()
         {
             Model.LoadMatches();

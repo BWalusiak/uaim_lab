@@ -1,16 +1,15 @@
 ﻿namespace Model.Service
 {
+    using Configuration;
+
     public static class NetworkClientFactory
     {
-        public static INetwork GetNetworkClient()
+        public static INetwork GetNetworkClient(ServiceConfiguration configuration)
         {
 #if DEBUG
             return new FakeNetworkClient();
 #else
-            const string serviceHost = "roomselector-app";
-            const int servicePort = 80;
-
-            return new NetworkClient( serviceHost, servicePort );
+            return new NetworkClient(configuration);
 #endif
         }
     }

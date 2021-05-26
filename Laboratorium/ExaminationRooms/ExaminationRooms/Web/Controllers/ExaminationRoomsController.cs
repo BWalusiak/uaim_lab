@@ -16,7 +16,7 @@ namespace ExaminationRooms.Web.Controllers
         {
             this._logger = logger;
             this._examinationRoomQueriesHandler = examinationRoomQueriesHandler;
-    }
+        }
 
         [HttpGet("examination-rooms")]
         public IEnumerable<ExaminationRoomDto> GetAll()

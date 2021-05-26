@@ -9,15 +9,11 @@
     {
         private static readonly HttpClient HttpClient = new HttpClient();
 
-        private readonly string _serviceHost;
-        private readonly ushort _servicePort;
+        private readonly string _serviceUrl;
 
-        public ServiceClient(string serviceHost, int servicePort)
+        public ServiceClient(string serviceUrl)
         {
-            Debug.Assert(!string.IsNullOrEmpty(serviceHost) && servicePort > 0);
-
-            _serviceHost = serviceHost;
-            _servicePort = (ushort) servicePort;
+            _serviceUrl = serviceUrl;
         }
 
         public TR CallWebService<TR>(HttpMethod httpMethod, string webServiceUri)
@@ -44,7 +40,7 @@
 
         private async Task<string> CallWebService(HttpMethod httpMethod, string callUri)
         {
-            var httpUri = $"http://{this._serviceHost}:{this._servicePort}/{callUri}";
+            var httpUri = $"{_serviceUrl}/{callUri}";
 
             var httpRequestMessage = new HttpRequestMessage(httpMethod, httpUri);
 

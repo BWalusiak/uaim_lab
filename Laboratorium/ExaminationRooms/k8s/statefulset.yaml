@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lab-rooms
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      data: lab-rooms
+  serviceName: lab-rooms
+  template:
+    metadata:
+      name: lab-rooms
+      labels:
+        data: lab-rooms
+    spec:
+      containers:
+        - name: data
+          image: roundel/uaim_lab_rooms-data
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP

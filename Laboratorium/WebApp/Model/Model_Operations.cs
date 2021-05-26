@@ -16,11 +16,11 @@
 
         private void LoadMatchesByNumberTask()
         {
-            var networkClient = NetworkClientFactory.GetNetworkClient();
+            var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
 
             try
             {
-                var matches = networkClient.GetMatches().Where(x => x.Room.Number == _searchText);
+                var matches = networkClient.GetMatches().Where(x => x.ExaminationRoom.Number.Contains(_searchText));
                 MatchByNumberList = matches.ToList();
             }
             catch (Exception e)
@@ -36,7 +36,7 @@
 
         private void LoadMatchesTask()
         {
-            var networkClient = NetworkClientFactory.GetNetworkClient();
+            var networkClient = NetworkClientFactory.GetNetworkClient(_configuration);
 
             try
             {
