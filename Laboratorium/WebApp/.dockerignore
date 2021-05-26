@@ -22,5 +22,7 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 **/.idea
+**/.gitlab-ci.yml
+k8s/*
 LICENSE
 README.md
