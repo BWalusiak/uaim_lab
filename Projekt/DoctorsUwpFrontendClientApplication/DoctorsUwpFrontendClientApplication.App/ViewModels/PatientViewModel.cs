@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DoctorsApp.Web.Application.Dtos;
+using DoctorsUwpFrontendClientApplication.Models;
 
 namespace Contoso.App.ViewModels
 {

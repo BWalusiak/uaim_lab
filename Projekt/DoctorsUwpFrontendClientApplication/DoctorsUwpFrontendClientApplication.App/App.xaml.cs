@@ -24,8 +24,7 @@
 
 using Contoso.App.Views;
 using Contoso.App.ViewModels;
-using Contoso.Repository;
-using Contoso.Repository.Rest;
+using DoctorsUwpFrontendClientApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using Windows.ApplicationModel;
@@ -34,6 +33,7 @@ using Windows.Globalization;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
+using DoctorsUwpFrontendClientApplication.Controller.Rest;
 
 namespace Contoso.App
 {
