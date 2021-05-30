@@ -93,7 +93,7 @@ deploy:pa:
     - export KUBECONFIG=$(mktemp)
     - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f "/builds/$CI_PROJECT_PATH/Miniprojekty/Kubernetes/PatientsApp"
+    - kubectl apply -f "$CI_PROJECT_DIR/Miniprojekty/Kubernetes/PatientsApp"
     - kubectl rollout restart deployment patients-app
   only:
     refs:
