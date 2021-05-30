@@ -9,7 +9,7 @@ services:
 
   rooms:
     build:
-      context: ./ExaminationRooms
+      context: ./ExaminationRooms/ExaminationRooms
 
   doctors:
     build:

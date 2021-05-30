@@ -10,7 +10,6 @@ namespace BlazorServer
     using Model;
     using Model.Configuration;
     using Utilities;
-    using Syncfusion.Blazor;
 
     public class Startup
     {
@@ -30,15 +29,12 @@ namespace BlazorServer
             services.AddScoped<IModel, Model>();
             services.AddScoped<IController, Controller>();
 
-            services.AddSyncfusionBlazor();
 
             services.AddSingleton(Configuration.GetSection("ServiceConfiguration").Get<ServiceConfiguration>());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //trial version
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDUwMjYzQDMxMzkyZTMxMmUzME5tQ2d6Y2wwQy8zSVJGRTBoaEdVOUdpSFc3RWRIZ2pWczJscmpSZHVCdTg9");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

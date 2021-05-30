@@ -27,12 +27,6 @@
     <RadzenLink Text=".Net docs" Path="https://docs.microsoft.com/en-us/dotnet/csharp/" Target="_blank"/>
 </div>
 
-<SfDialog Width="230px" @bind-Visible="@IsVisible">
-    <DialogButtons >
-        <RadzenButton Text="Not implemented" Click="@ToFalse" Style="align-content: center"></RadzenButton>
-    </DialogButtons>
-</SfDialog>
-
 @code{
     private bool IsVisible { get; set; }
 
