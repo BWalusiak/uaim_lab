@@ -93,7 +93,7 @@ deploy:dw:
     - export KUBECONFIG=$(mktemp)
     - echo ${K8S_CONFIG} | base64 -d > ${KUBECONFIG}
   script:
-    - kubectl apply -f "$CI_PROJECT_DIR/Miniprojekty/Kubernetes/PatientsApp"
+    - kubectl apply -f "$CI_PROJECT_DIR/Miniprojekty/Kubernetes/DoctorsWebApp"
     - kubectl rollout restart deployment doctors-web
   only:
     refs:

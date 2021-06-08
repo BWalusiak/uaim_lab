@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctors-web
+  namespace: uaim
+spec:
+  selector:
+    matchLabels:
+      app: doctors-web
+  template:
+    metadata:
+      name: doctors-web
+      labels:
+        app: doctors-web
+    spec:
+      containers:
+        - name: app
+          image: roundel/uaim_project_doctors-web
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: DOC_WEB_ServiceConfiguration__BackendUrl
+              value: "http://doctors-app"
+      nodeSelector:
+        kubernetes.io/arch: amd64
