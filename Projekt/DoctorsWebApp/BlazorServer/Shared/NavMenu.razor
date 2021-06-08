@@ -1,0 +1,66 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Patient App</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="doctors">
+                <span class="oi oi-map" aria-hidden="true"></span> Doctors
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="patients">
+                <span class="oi oi-map" aria-hidden="true"></span> Patients
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="matches">
+                <span class="oi oi-map" aria-hidden="true"></span> Matches
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="matches-sex">
+                <span class="oi oi-map" aria-hidden="true"></span> Sex Matches
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="add-patient">
+                <span class="oi oi-map" aria-hidden="true"></span> Add Patient
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="add-doctor">
+                <span class="oi oi-map" aria-hidden="true"></span> Add Doctor
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="delete-patient">
+                <span class="oi oi-map" aria-hidden="true"></span> Delete Patient
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="delete-doctor">
+                <span class="oi oi-map" aria-hidden="true"></span> Delete Doctor
+            </NavLink>
+        </li>
+        <li/>
+    </ul>
+</div>
+
+@code {
+    private bool _collapseNavMenu = true;
+
+    private string NavMenuCssClass => _collapseNavMenu
+        ? "collapse"
+        : null;
+
+    private void ToggleNavMenu()
+    {
+        _collapseNavMenu = !_collapseNavMenu;
+    }
+
+}

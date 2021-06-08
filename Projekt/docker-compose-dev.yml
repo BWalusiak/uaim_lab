@@ -9,8 +9,6 @@ services:
 
   doctors-app:
     image: dadurex/uaim_project_doctors_app
-    ports:
-      - "42069:80"
     environment:
       DOC_APP_ServiceConfiguration__DoctorsDataUrl: "http://doctors-data"
       DOC_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"
@@ -18,8 +16,14 @@ services:
   patients-app:
     build:
       context: ./PatientsApp
-    ports:
-      - "42070:80"
     environment:
       PAT_APP_ServiceConfiguration__DoctorsDataUrl: "http://doctors-data"
       PAT_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"
+
+  doctors-web:
+    build:
+      context: ./DoctorsWebApp
+    ports:
+      - 42069:80
+    environment:
+      DOC_WEB_ServiceConfiguration__BackendUrl: "http://doctors-app"

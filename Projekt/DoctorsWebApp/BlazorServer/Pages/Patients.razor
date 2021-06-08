@@ -1,0 +1,32 @@
+@page "/Patients"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+<RadzenHeading Size="H1" Text="Patients"/>
+
+<RadzenButton Icon="refresh" Text="Refresh" Click="@_controller.GetAllPatients" Style="width: 160px"/>
+
+<RadzenGrid AllowFiltering="true" AllowColumnResize="true" PageSize="5" AllowPaging="true" Data="@_model.PatientList" TItem="PatientData" ColumnWidth="300px">
+    <Columns>
+        <RadzenGridColumn TItem="PatientData" Property="Id" Title="Id"/>
+        <RadzenGridColumn TItem="PatientData" Property="Name" Title="First Name"/>
+        <RadzenGridColumn TItem="PatientData" Property="Sex" Title="Sex"/>
+        <RadzenGridColumn TItem="PatientData">
+            <Template Context="patientData">
+                <RadzenGrid AllowFiltering="true" AllowPaging="true" Data="patientData.Conditions" TItem="ConditionData">
+                    <Columns>
+                        <RadzenGridColumn TItem="ConditionData" Property="Type" Title="Type"/>
+                        <RadzenGridColumn TItem="ConditionData" Property="CertificationDate">
+                            <Template Context="diagnosisDate">
+                                @($"{diagnosisDate.DiagnosisDate.Date:dd/MM/yyyy}")
+                            </Template>
+                        </RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>

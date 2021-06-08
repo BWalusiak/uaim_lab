@@ -1,0 +1,49 @@
+@page "/matches-sex"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+<RadzenHeading Size="H1" Text="Matches with sex"/>
+
+<RadzenButton Icon="refresh" Text="Refresh" Click="@_controller.GetMatchesSex" Style="width: 160px"/>
+
+<RadzenGrid AllowFiltering="true" AllowColumnResize="true" PageSize="5" AllowPaging="true" Data="@_model.SexMatchList" TItem="MatchData" ColumnWidth="300px">
+    <Columns>
+        <RadzenGridColumn TItem="MatchData" Property="Patient.Id" Title="Patient Id"/>
+        <RadzenGridColumn TItem="MatchData" Property="Patient.Name" Title="Patient Name"/>
+        <RadzenGridColumn TItem="MatchData" Property="Patient.Sex" Title="Patient Sex"/>
+        <RadzenGridColumn TItem="MatchData">
+            <Template Context="matchData">
+                <RadzenGrid AllowFiltering="true" AllowPaging="true" Data="matchData.Patient.Conditions" TItem="ConditionData">
+                    <Columns>
+                        <RadzenGridColumn TItem="ConditionData" Property="Type" Title="Type"/>
+                        <RadzenGridColumn TItem="ConditionData" Property="DiagnosisDate">
+                            <Template Context="diagnosisDate">
+                                @($"{diagnosisDate.DiagnosisDate.Date:dd/MM/yyyy}")
+                            </Template>
+                        </RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </Template>
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="MatchData" Property="Doctor.Id" Title="Doctor Id"/>
+        <RadzenGridColumn TItem="MatchData" Property="Doctor.Name" Title="Doctor Name"/>
+        <RadzenGridColumn TItem="MatchData" Property="Doctor.Sex" Title="Doctor Sex"/>
+        <RadzenGridColumn TItem="MatchData">
+            <Template Context="matchData">
+                <RadzenGrid AllowFiltering="true" AllowPaging="true" Data="matchData.Doctor.Specializations" TItem="SpecializationData">
+                    <Columns>
+                        <RadzenGridColumn TItem="SpecializationData" Property="Type" Title="Type"/>
+                        <RadzenGridColumn TItem="SpecializationData" Property="CertificationDate">
+                            <Template Context="certificationDate">
+                                @($"{certificationDate.CertificationDate.Date:dd/MM/yyyy}")
+                            </Template>
+                        </RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>

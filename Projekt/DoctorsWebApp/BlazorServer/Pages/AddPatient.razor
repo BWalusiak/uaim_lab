@@ -1,0 +1,81 @@
+@page "/add-patient"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+<RadzenHeading Size="H1" Text="Add Patient"/>
+
+<RadzenButton Icon="add" Text="Add Patient" Click="@_controller.AddPatient" Style="width: 160px"/>
+
+<RadzenFieldset Text="New account">
+    <div class="row" style="padding: 5px">
+        <div class="col-md-4 align-items-center d-flex">
+            <RadzenLabel Text="Id"/>
+        </div>
+        <div class="col-md-8">
+            <RadzenNumeric Name="Id" @bind-Value="@_model.NewPatient.Id" style="width: 80%;"/>
+        </div>
+    </div>
+    <div class="row" style="padding: 5px">
+        <div class="col-md-4 align-items-center d-flex">
+            <RadzenLabel Text="Name"/>
+        </div>
+        <div class="col-md-8">
+            <RadzenTextBox Name="Name" @bind-Value="@_model.NewPatient.Name" style="width: 80%;"/>
+        </div>
+    </div>
+    <div class="row" style="padding: 5px">
+        <div class="col-md-4 align-items-center d-flex">
+            <RadzenLabel Text="Sex"/>
+        </div>
+        <div class="col-md-8">
+            <RadzenDropDown @bind-Value="_model.NewPatient.Sex" AllowClear="false" Placeholder="Pick your gender"
+                            Data="@_model.Sexes" style="width: 80%;" TextProperty="Sex" Name="Sex">
+            </RadzenDropDown>
+        </div>
+    </div>
+    <div class="row" style="padding: 5px">
+        <div class="col-md-4 align-items-center d-flex">
+            <RadzenLabel Text="Pesel"/>
+        </div>
+        <div class="col-md-8">
+            <RadzenTextBox Name="Pesel" @bind-Value="@_model.NewPatient.Pesel" style="width: 80%;"/>
+        </div>
+    </div>
+</RadzenFieldset>
+
+<RadzenFieldset Text="New condition">
+    <RadzenButton Icon="add" Text="Add condition" Click="@_controller.AddConditionToNewConditionList" Style="width: 160px"/>
+
+    <div class="row" style="padding: 5px">
+        <div class="col-md-4 align-items-center d-flex">
+            <RadzenLabel Text="Type"/>
+        </div>
+        <div class="col-md-8">
+            <RadzenNumeric Name="Type" @bind-Value="@_model.NewCondition.Type" style="width: 80%;"/>
+        </div>
+    </div>
+    <div class="row" style="padding: 5px">
+        <div class="col-md-4 align-items-center d-flex">
+            <RadzenLabel Text="DiagnosisDate"/>
+        </div>
+        <div class="col-md-8">
+            <RadzenDatePicker style="width: 80%;" Name="DiagnosisDate" @bind-Value="_model.NewCondition.DiagnosisDate"/>
+        </div>
+    </div>
+</RadzenFieldset>
+
+<RadzenFieldset Text="Condition list">
+    <RadzenGrid Data="_model.NewConditionList" TItem="ConditionData">
+        <Columns>
+            <RadzenGridColumn TItem="ConditionData" Property="Type" Title="Type"/>
+            <RadzenGridColumn TItem="ConditionData" Property="DiagnosisDate" Title="Diagnosis">
+                <Template Context="diagnosisDate">
+                    @($"{diagnosisDate.DiagnosisDate.Date:dd/MM/yyyy}")
+                </Template>
+            </RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+</RadzenFieldset>

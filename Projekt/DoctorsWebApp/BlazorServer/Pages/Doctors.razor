@@ -1,0 +1,32 @@
+@page "/doctors"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+<RadzenHeading Size="H1" Text="Doctors"/>
+
+<RadzenButton Icon="refresh" Text="Refresh" Click="@_controller.GetAllDoctors" Style="width: 160px"/>
+
+<RadzenGrid AllowFiltering="true" AllowColumnResize="true" PageSize="5" AllowPaging="true" Data="@_model.DoctorList" TItem="DoctorData" ColumnWidth="300px">
+    <Columns>
+        <RadzenGridColumn TItem="DoctorData" Property="Id" Title="Id"/>
+        <RadzenGridColumn TItem="DoctorData" Property="Name" Title="First Name"/>
+        <RadzenGridColumn TItem="DoctorData" Property="Sex" Title="Sex"/>
+        <RadzenGridColumn TItem="DoctorData">
+            <Template Context="doctorData">
+                <RadzenGrid AllowFiltering="true" AllowPaging="true" Data="doctorData.Specializations" TItem="SpecializationData">
+                    <Columns>
+                        <RadzenGridColumn TItem="SpecializationData" Property="Type" Title="Type"/>
+                        <RadzenGridColumn TItem="SpecializationData" Property="CertificationDate">
+                            <Template Context="certificationDate">
+                                @($"{certificationDate.CertificationDate.Date:dd/MM/yyyy}")
+                            </Template>
+                        </RadzenGridColumn>
+                    </Columns>
+                </RadzenGrid>
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>

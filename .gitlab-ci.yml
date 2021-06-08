@@ -27,6 +27,16 @@ trigger_pa:
         - Projekt/PatientsApp/**/*
         - Miniprojekty/Kubernetes/PatientsApp/**/*
 
+trigger_dw:
+  stage: triggers
+  trigger:
+    include: Projekt/DoctorsWebApp/.gitlab-ci.yml
+    strategy: depend
+  rules:
+    - changes:
+        - Projekt/DoctorsWebApp/**/*
+        - Miniprojekty/Kubernetes/DoctorsWebApp/**/*
+
 trigger_lab_dd:
   stage: triggers
   trigger:

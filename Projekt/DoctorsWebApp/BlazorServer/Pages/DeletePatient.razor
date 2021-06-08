@@ -1,0 +1,55 @@
+@page "/delete-patient"
+@using Controller
+@using Model.Models
+@using Model.Data
+@inject IController _controller
+@inject IModel _model
+
+@code {
+    bool _value = true;
+
+    void OnChange(bool? value)
+    {
+        if (value != null)
+            _value = (bool) value;
+    }
+
+}
+
+<RadzenHeading Size="H1" Text="Delete Patient"/>
+
+@* <RadzenSwitch @bind-Value="@_value" Style="margin-bottom: 20px" Change="@(args => OnChange(args))" /> *@
+
+<RadzenSelectBar @bind-Value="@_value" TValue="bool" Change=@(args => OnChange(args))>
+    <Items>
+        <RadzenSelectBarItem Text="Id" Value="true"/>
+        <RadzenSelectBarItem Text="Pesel" Value="false"/>
+    </Items>
+</RadzenSelectBar>
+
+<RadzenFieldset Text="Delete Patient">
+    @if (_value)
+    {
+        <RadzenButton Icon="remove" Text="Delete by id" Click="@_controller.DeletePatientId" Style="width: 160px"/>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-4 align-items-center d-flex">
+                <RadzenLabel Text="Id"/>
+            </div>
+            <div class="col-md-8">
+                <RadzenNumeric Name="Id" @bind-Value="@_model.SearchTextDeletePatientId" style="width: 80%;"/>
+            </div>
+        </div>
+    }
+    else
+    {
+        <RadzenButton Icon="remove" Text="Delete by pesel" Click="@_controller.DeletePatientPesel" Style="width: 160px"/>
+        <div class="row" style="padding: 5px">
+            <div class="col-md-4 align-items-center d-flex">
+                <RadzenLabel Text="Pesel"/>
+            </div>
+            <div class="col-md-8">
+                <RadzenTextBox Name="Pesel" @bind-Value="@_model.SearchTextDeletePatientPesel" style="width: 80%;"/>
+            </div>
+        </div>
+    }
+</RadzenFieldset>
