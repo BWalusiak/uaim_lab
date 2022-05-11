@@ -1,6 +1,7 @@
-version: "3.9"
+version: "3"
 services:
   doctors-data:
+    image: bwalusiak/uaim_project_doctors_data
     build:
       context: ./DoctorsData
 
@@ -14,6 +15,7 @@ services:
       DOC_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"
 
   patients-app:
+    image: bwalusiak/uaim_project_patients_app
     build:
       context: ./PatientsApp
     environment:
@@ -21,6 +23,7 @@ services:
       PAT_APP_ServiceConfiguration__PatientsDataUrl: "http://patients-data"
 
   doctors-web:
+    image: bwalusiak/uaim_project_doctors_web
     build:
       context: ./DoctorsWebApp
     ports:
